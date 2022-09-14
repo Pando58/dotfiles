@@ -1,0 +1,11 @@
+include /usr/share/nano-syntax-highlighting/*.nanorc
+
+set linenumbers
+set afterends
+set autoindent
+set boldtext
+set emptyline
+set matchbrackets "(<[{)>]}"
+set mouse
+set tabsize 4
+set tabstospaces

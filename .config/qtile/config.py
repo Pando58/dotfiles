@@ -5,6 +5,7 @@ from libqtile.lazy import lazy
 mod = "mod4"
 terminal = "alacritty"
 browser= "brave"
+file_manager = "nemo"
 
 keys = [
     # Switch focus between windows
@@ -107,6 +108,11 @@ keys = [
         [mod], "t",
         lazy.spawn(terminal), # -e /usr/bin/fish
         desc="Launch terminal (" + terminal + ")"
+    ),
+    Key(
+        [mod], "e",
+        lazy.spawn(file_manager),
+        desc="Launch file manager (" + file_manager + ")"
     ),
     Key(
         [mod], "b",

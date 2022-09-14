@@ -105,7 +105,7 @@ keys = [
     #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key(
         [mod], "t",
-        lazy.spawn(terminal + " -e /usr/bin/fish"),
+        lazy.spawn(terminal), # -e /usr/bin/fish
         desc="Launch terminal (" + terminal + ")"
     ),
     Key(

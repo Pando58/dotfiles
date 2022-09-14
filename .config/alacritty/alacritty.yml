@@ -1,0 +1,13 @@
+window:
+  padding:
+    x: 6
+    y: 6
+  opacity: 0.8
+selection:
+  save_to_clipboard: true
+cursor:
+  style:
+    shape: Beam
+    blinking: On
+shell:
+  program: /bin/fish

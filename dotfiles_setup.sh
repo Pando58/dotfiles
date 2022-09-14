@@ -1,8 +1,18 @@
-# Install packages
-sudo pacman -S --needed - < $HOME/.pkglist/pacman
+pkgs_pacman=$HOME/.pkglist/pacman
+pkgs_aur=$HOME/.pkglist/aur
 
-# Yay
-git clone https://aur.archlinux.org/yay-bin.git
-cd yay-bin
-makepkg -si
-# cd $HOME
+# Install packages
+sudo pacman -S --needed - < $pkgs_pacman
+
+# Install Yay
+if ! [[ $(command -v yay) ]]; then
+    git clone https://aur.archlinux.org/yay-bin.git
+    cd yay-bin
+    makepkg -si
+    cd ..
+fi
+
+# Install yay packages
+for pkg in $(<$pkgs_aur); do
+    yay -S --answerdiff None "$pkg"
+done

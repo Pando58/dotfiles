@@ -16,3 +16,6 @@ fi
 for pkg in $(<$pkgs_aur); do
     yay -S --answerdiff None "$pkg"
 done
+
+# Wallpaper
+nitrogen --set-zoom-fill $HOME/Pictures/Wallpapers/949049.png

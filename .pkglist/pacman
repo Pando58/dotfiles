@@ -3,6 +3,8 @@ base-devel
 alacritty
 fish
 nano-syntax-highlighting
+man-db
+man-pages
 nitrogen
 arandr
 nemo

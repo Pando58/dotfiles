@@ -2,6 +2,7 @@ import:
   - ~/.config/alacritty/colorschemes/Doom_one.yaml
 
 window:
+  dynamic_padding: true
   padding:
     x: 6
     y: 6

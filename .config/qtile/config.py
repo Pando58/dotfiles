@@ -119,6 +119,26 @@ keys = [
         lazy.spawn(browser),
         desc="Launch browser (" + browser + ")"
     ),
+    # Rofi menus
+    Key(
+        [mod], "a",
+        lazy.spawn("rofi -show drun"),
+        desc="Launch Rofi's application menu"
+    ),
+    Key(
+        [mod, "shift"], "a",
+        lazy.spawn("rofi -show filebrowser"),
+    ),
+    Key(
+        [mod], "r",
+        lazy.spawn("rofi -show run"),
+        desc="Launch Rofi's command menu"
+    ),
+    Key(
+        [mod], "w",
+        lazy.spawn("rofi -show window"),
+        desc="Launch Rofi's window selector"
+    ),
 ]
 
 groups = [Group(i) for i in "123456789"]

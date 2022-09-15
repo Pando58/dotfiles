@@ -17,5 +17,8 @@ for pkg in $(<$pkgs_aur); do
     yay -S --answerdiff None "$pkg"
 done
 
+# Generate default user folders
+xdg-user-dirs-update
+
 # Wallpaper
 nitrogen --set-zoom-fill $HOME/Pictures/Wallpapers/949049.png

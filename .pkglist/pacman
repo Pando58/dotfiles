@@ -5,7 +5,11 @@ fish
 nano-syntax-highlighting
 man-db
 man-pages
-pamixer
+alsa-utils
+pulseaudio-alsa
+pavucontrol
+mpd
+mpc
 xdg-user-dirs
 nitrogen
 rofi

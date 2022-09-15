@@ -22,3 +22,6 @@ xdg-user-dirs-update
 
 # Wallpaper
 nitrogen --set-zoom-fill $HOME/Pictures/Wallpapers/949049.png
+
+# mpd
+mkdir -p $HOME/.mpd/playlists

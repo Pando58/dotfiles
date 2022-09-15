@@ -218,20 +218,6 @@ keys.extend([
 ])
 
 # Layouts
-layouts = [
-    layout.Columns(border_width=1, margin=6,fair=False),
-    layout.Max(),
-]
-
-# Screens and bars
-widget_defaults = dict(
-    font="JetBrains Mono Nerd Font Bold",
-    fontsize=14,
-    padding=3,
-)
-
-extension_defaults = widget_defaults.copy()
-
 colorscheme = {
 "Rosewater" : "#f5e0dc",
 "Flamingo"  : "#f2cdcd",
@@ -260,6 +246,32 @@ colorscheme = {
 "Mantle"    : "#181825",
 "Crust"     : "#11111b",
 }
+
+layout_theme = {
+    "border_width": 2,
+    "border_normal": colorscheme["Overlay0"],
+    "border_focus": colorscheme["Sapphire"],
+    "margin": 6,
+}
+
+layouts = [
+    layout.Columns(
+        **layout_theme,
+        border_on_single=True,
+        grow_amount=1,
+        # fair=True,
+    ),
+    layout.Max(),
+]
+
+# Screens and bars
+widget_defaults = dict(
+    font="JetBrains Mono Nerd Font Bold",
+    fontsize=14,
+    padding=3,
+)
+
+extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(

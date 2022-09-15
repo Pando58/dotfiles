@@ -1,5 +1,7 @@
+import os
+
 from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, ScratchPad, DropDown, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
 
 mod = "mod4"
@@ -7,6 +9,7 @@ terminal = "alacritty"
 browser= "brave"
 file_manager = "nemo"
 
+# Shortcuts
 keys = [
     # Switch focus between windows
     Key(
@@ -103,7 +106,6 @@ keys = [
         desc="Kill focused window"
     ),
     # Applications
-    #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key(
         [mod], "t",
         lazy.spawn(terminal), # -e /usr/bin/fish
@@ -139,9 +141,42 @@ keys = [
         lazy.spawn("rofi -show window"),
         desc="Launch Rofi's window selector"
     ),
+    # Sound
+    Key(
+        [], "XF86AudioRaiseVolume",
+        lazy.spawn("pamixer -i 5"),
+        desc="Launch Rofi's window selector"
+    ),
+    Key(
+        [], "XF86AudioLowerVolume",
+        lazy.spawn("pamixer -d 5"),
+        desc="Launch Rofi's window selector"
+    ),
 ]
 
-groups = [Group(i) for i in "123456789"]
+# Workspaces
+groups = [
+    Group(
+        "1",
+        label="",
+    ),
+    Group(
+        "2",
+        label="",
+    ),
+    Group(
+        "3",
+        label="",
+    ),
+    Group(
+        "4",
+        label="",
+    ),
+    Group(
+        "5",
+        label="",
+    ),
+]
 
 for i in groups:
     keys.extend([
@@ -161,36 +196,199 @@ for i in groups:
         ),
     ])
 
+groups.append(
+    ScratchPad(
+        "scratchpad", [
+            DropDown(
+                "terminal", "alacritty",
+                width=0.4,
+                height=0.5,
+                x=0.3,
+                y=0.2,
+            ),
+        ]
+    ),
+)
+
+keys.extend([
+    KeyChord([mod], "g", [
+        Key([], "t", lazy.group["scratchpad"].dropdown_toggle("terminal"))
+    ])
+])
+
+# Layouts
 layouts = [
     layout.Columns(border_width=1, margin=6,fair=False),
     layout.Max(),
 ]
 
+# Screens and bars
 widget_defaults = dict(
-    font="monospace",
+    font="JetBrains Mono Nerd Font Bold",
     fontsize=14,
-    padding=6,
+    padding=3,
 )
+
 extension_defaults = widget_defaults.copy()
+
+colorscheme = {
+"Rosewater" : "#f5e0dc",
+"Flamingo"  : "#f2cdcd",
+"Pink"      : "#f5c2e7",
+"Mauve"     : "#cba6f7",
+"Red"       : "#f38ba8",
+"Maroon"    : "#eba0ac",
+"Peach"     : "#fab387",
+"Yellow"    : "#f9e2af",
+"Green"     : "#a6e3a1",
+"Teal"      : "#94e2d5",
+"sky"       : "#89dceb",
+"Sapphire"  : "#74c7ec",
+"Blue"      : "#89b4fa",
+"Lavender"  : "#b4befe",
+"Text"      : "#cdd6f4",
+"Subtext1"  : "#bac2de",
+"Subtext0"  : "#a6adc8",
+"Overlay2"  : "#9399b2",
+"Overlay1"  : "#7f849c",
+"Overlay0"  : "#6c7086",
+"Surface2"  : "#585b70",
+"Surface1"  : "#45475a",
+"Surface0"  : "#313244",
+"Base"      : "#1e1e2e",
+"Mantle"    : "#181825",
+"Crust"     : "#11111b",
+}
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                widget.TextBox(
+                    text="",
+                    padding=7,
+                    fontsize=20,
+                    foreground=colorscheme["Blue"],
+                    background=colorscheme["Crust"],
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                widget.Spacer(
+                    length=4,
+                    background=colorscheme["Crust"],
+                ),
+                widget.TextBox(
+                    text="",
+                    padding=0,
+                    fontsize=27,
+                    foreground=colorscheme["Crust"],
+                    background=colorscheme["Surface2"],
+                ),
+                widget.GroupBox(
+                    highlight_method="text",
+                    this_current_screen_border=colorscheme["Green"],
+                    urgent_alert_method="text",
+                    urgent_text=colorscheme["Red"],
+                    active=colorscheme["Text"],
+                    inactive=colorscheme["Surface0"],
+                    fontsize=20,
+                    disable_drag=True,
+                    background=colorscheme["Surface2"],
+                ),
+                widget.TextBox(
+                    text="",
+                    padding=0,
+                    fontsize=27,
+                    foreground=colorscheme["Surface2"],
+                    background=colorscheme["Sapphire"],
+                ),
+                widget.CurrentLayoutIcon(
+                    custom_icon_paths=[os.path.expanduser("~/.config/qtile/layout-icons")],
+                    scale=0.67,
+                    padding=0,
+                    background=colorscheme["Sapphire"],
+                ),
+                widget.TextBox(
+                    text="",
+                    padding=0,
+                    fontsize=27,
+                    foreground=colorscheme["Sapphire"],
+                    background=colorscheme["Surface0"],
+                ),
+                widget.WindowName(
+                    padding=10,
+                    background=colorscheme["Surface0"],
+                ),
+                widget.Chord(),
+                widget.TextBox(
+                    text="",
+                    padding=0,
+                    fontsize=27,
+                    background=colorscheme["Surface0"],
+                    foreground=colorscheme["Sapphire"],
+                ),
+                widget.TextBox(
+                    text="墳",
+                    fontsize=20,
+                    background=colorscheme["Sapphire"],
+                    foreground=colorscheme["Crust"],
+                ),
+                widget.Spacer(
+                    length=6,
+                    background=colorscheme["Sapphire"],
+                ),
+                widget.PulseVolume(
+                    background=colorscheme["Sapphire"],
+                    foreground=colorscheme["Crust"],
+                ),
+                widget.TextBox(
+                    text="",
+                    padding=0,
+                    fontsize=27,
+                    background=colorscheme["Sapphire"],
+                    foreground=colorscheme["Peach"],
+                ),
+                widget.Clock(
+                    format="%d-%m-%Y",
+                    background=colorscheme["Peach"],
+                    foreground=colorscheme["Base"],
+                ),
+                widget.TextBox(
+                    text="",
+                    padding=0,
+                    fontsize=27,
+                    background=colorscheme["Peach"],
+                    foreground=colorscheme["Base"],
+                ),
+                widget.Systray(
+                    background=colorscheme["Base"],
+                ),
+                widget.TextBox(
+                    text="",
+                    padding=0,
+                    fontsize=27,
+                    background=colorscheme["Base"],
+                    foreground=colorscheme["Green"],
+                ),
+                widget.Clock(
+                    format="%H:%M:%S",
+                    background=colorscheme["Green"],
+                    foreground=colorscheme["Mantle"],
+                ),
+                widget.TextBox(
+                    text="",
+                    padding=0,
+                    fontsize=27,
+                    background=colorscheme["Green"],
+                    foreground=colorscheme["Mantle"],
+                ),
+                widget.TextBox(
+                    text=" ",
+                    background=colorscheme["Mantle"],
+                    foreground=colorscheme["Red"],
+                    fontsize=15,
+                #   mouse_callbacks={
+                #       "Button1": lazy.shutdown(),
+                #   },
+                ),
             ],
             32,
             margin = [0, 0, 6, 0],
@@ -209,11 +407,6 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
-dgroups_key_binder = None
-dgroups_app_rules = []  # type: list
-follow_mouse_focus = True
-bring_front_click = False
-cursor_warp = False
 floating_layout = layout.Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
@@ -226,12 +419,15 @@ floating_layout = layout.Floating(
         Match(title="pinentry"),  # GPG key password entry
     ]
 )
+
+dgroups_key_binder = None
+dgroups_app_rules = []  # type: list
+follow_mouse_focus = True
+bring_front_click = False
+cursor_warp = True
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
-
-# If things like steam games want to auto-minimize themselves when losing
-# focus, should we respect this or not?
 auto_minimize = True
 
 # When using the Wayland backend, this can be used to configure input devices.

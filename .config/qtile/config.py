@@ -9,6 +9,8 @@ terminal = "alacritty"
 browser= "brave"
 file_manager = "nemo"
 
+home=os.path.expanduser("~")
+
 # Shortcuts
 keys = [
     # Switch focus between windows
@@ -124,12 +126,23 @@ keys = [
     # Rofi menus
     Key(
         [mod], "a",
-        lazy.spawn("rofi -show drun"),
+        lazy.spawn(f"sh {home}/.config/rofi/launchers/type-2/launcher.sh"),
         desc="Launch Rofi's application menu"
     ),
     Key(
-        [mod, "shift"], "a",
-        lazy.spawn("rofi -show filebrowser"),
+        [mod], "m",
+        lazy.spawn(f"sh {home}/.config/rofi/applets/bin/mpd.sh"),
+        desc="Launch Rofi's music menu"
+    ),
+    Key(
+        [mod], "s",
+        lazy.spawn(f"sh {home}/.config/rofi/applets/bin/screenshot.sh"),
+        desc="Launch Rofi's screenshot menu"
+    ),
+    Key(
+        [mod], "x",
+        lazy.spawn(f"sh {home}/.config/rofi/powermenu/type-1/powermenu.sh"),
+        desc="Launch Rofi's power menu"
     ),
     Key(
         [mod], "r",
@@ -144,12 +157,12 @@ keys = [
     # Sound
     Key(
         [], "XF86AudioRaiseVolume",
-        lazy.spawn("pamixer -i 5"),
+        lazy.spawn("amixer -M set Master,0 5%+ unmute"),
         desc="Launch Rofi's window selector"
     ),
     Key(
         [], "XF86AudioLowerVolume",
-        lazy.spawn("pamixer -d 5"),
+        lazy.spawn("amixer -M set Master,0 5%- unmute"),
         desc="Launch Rofi's window selector"
     ),
 ]
@@ -323,7 +336,7 @@ screens = [
                     background=colorscheme["Sapphire"],
                 ),
                 widget.CurrentLayoutIcon(
-                    custom_icon_paths=[os.path.expanduser("~/.config/qtile/layout-icons")],
+                    custom_icon_paths=[f"{home}/.config/qtile/layout-icons"],
                     scale=0.67,
                     padding=0,
                     background=colorscheme["Sapphire"],
@@ -357,7 +370,7 @@ screens = [
                     length=6,
                     background=colorscheme["Sapphire"],
                 ),
-                widget.PulseVolume(
+                widget.Volume(
                     background=colorscheme["Sapphire"],
                     foreground=colorscheme["Crust"],
                 ),

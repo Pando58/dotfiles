@@ -201,10 +201,11 @@ groups.append(
         "scratchpad", [
             DropDown(
                 "terminal", "alacritty",
+                on_focus_lost_hide=False,
                 width=0.4,
                 height=0.5,
                 x=0.3,
-                y=0.2,
+                y=0.25,
             ),
         ]
     ),
@@ -283,14 +284,14 @@ screens = [
                     background=colorscheme["Surface2"],
                 ),
                 widget.GroupBox(
+                    disable_drag=True,
                     highlight_method="text",
-                    this_current_screen_border=colorscheme["Green"],
                     urgent_alert_method="text",
-                    urgent_text=colorscheme["Red"],
+                    this_current_screen_border=colorscheme["Green"],
                     active=colorscheme["Text"],
                     inactive=colorscheme["Surface0"],
+                    urgent_text=colorscheme["Red"],
                     fontsize=20,
-                    disable_drag=True,
                     background=colorscheme["Surface2"],
                 ),
                 widget.TextBox(

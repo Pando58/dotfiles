@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Qtile
+Comment=Qtile Session
+Exec=~/.xsessions/qtile.sh
+Type=Application
+Keywords=wm;tiling

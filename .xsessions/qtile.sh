@@ -1,0 +1,2 @@
+picom -b
+qtile start

@@ -196,25 +196,34 @@ for i in groups:
         ),
     ])
 
-groups.append(
+groups.extend([
     ScratchPad(
-        "scratchpad", [
-            DropDown(
-                "terminal", "alacritty",
-                on_focus_lost_hide=False,
-                width=0.4,
-                height=0.5,
-                x=0.3,
-                y=0.25,
-            ),
-        ]
+       "scratchpad", [
+           DropDown(
+               "terminal", terminal,
+               on_focus_lost_hide=False,
+               width=0.4,
+               height=0.5,
+               x=0.3,
+               y=0.25,
+           ),
+           DropDown(
+               "mixer", terminal + " -e pulsemixer",
+               on_focus_lost_hide=False,
+               width=0.4,
+               height=0.5,
+               x=0.3,
+               y=0.25,
+           ),
+       ]
     ),
-)
+])
 
 keys.extend([
     KeyChord([mod], "g", [
         Key([], "t", lazy.group["scratchpad"].dropdown_toggle("terminal"))
-    ])
+    ]),
+    Key([mod], "v", lazy.group["scratchpad"].dropdown_toggle("mixer")),
 ])
 
 # Layouts

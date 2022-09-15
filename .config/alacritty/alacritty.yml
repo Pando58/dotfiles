@@ -2,27 +2,16 @@ import:
   - ~/.config/alacritty/colorschemes/Doom_one.yaml
 
 window:
+  opacity: 1.0
   dynamic_padding: true
   padding:
     x: 6
     y: 6
 
-  opacity: 1.0
-
 font:
-  normal:
-    family: "JetBrainsMono"
-
-  bold:
-    family: "JetBrainsMono"
-
-  italic:
-    family: "JetBrainsMono"
-
-  bold_italic:
-    family: "JetBrainsMono"
-
   size: 10
+  normal:
+    family: "JetBrains Mono Nerd Font"
 
 selection:
   save_to_clipboard: true

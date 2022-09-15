@@ -8,9 +8,10 @@ man-pages
 xdg-user-dirs
 nitrogen
 rofi
-papirus-icon-theme
 arandr
 nemo
 nemo-fileroller
 neofetch
 ranger
+papirus-icon-theme
+ttf-jetbrains-mono

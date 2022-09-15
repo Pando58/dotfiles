@@ -1,13 +1,35 @@
+import:
+  - ~/.config/alacritty/colorschemes/Doom_one.yaml
+
 window:
   padding:
     x: 6
     y: 6
-  opacity: 0.8
+
+  opacity: 1.0
+
+font:
+  normal:
+    family: "JetBrainsMono"
+
+  bold:
+    family: "JetBrainsMono"
+
+  italic:
+    family: "JetBrainsMono"
+
+  bold_italic:
+    family: "JetBrainsMono"
+
+  size: 10
+
 selection:
   save_to_clipboard: true
+
 cursor:
   style:
     shape: Beam
     blinking: On
+
 shell:
   program: /bin/fish

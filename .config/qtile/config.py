@@ -279,6 +279,8 @@ layout_theme = {
 layouts = [
     layout.Columns(
         **layout_theme,
+        border_focus_stack=colorscheme["Green"],
+        border_normal_stack=layout_theme["border_normal"],
         border_on_single=True,
         grow_amount=1,
         # fair=True,
@@ -442,8 +444,17 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
+layout_theme = {
+    "border_width": 2,
+    "border_normal": colorscheme["Overlay0"],
+    "border_focus": colorscheme["Sapphire"],
+    "margin": 6,
+}
+
 floating_layout = layout.Floating(
-    **layout_theme,
+    border_width=2,
+    border_normal=colorscheme["Overlay0"],
+    border_focus=colorscheme["Red"],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,

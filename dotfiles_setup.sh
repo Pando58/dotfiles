@@ -1,5 +1,5 @@
-pkgs_pacman=$HOME/.pkglist/pacman
-pkgs_aur=$HOME/.pkglist/aur
+pkgs_pacman=$(pwd)/.pkglist/pacman
+pkgs_aur=$(pwd)/.pkglist/aur
 
 # Install packages
 sudo pacman -S --needed - < $pkgs_pacman

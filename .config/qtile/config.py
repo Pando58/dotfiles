@@ -132,7 +132,7 @@ keys = [
     # Rofi menus
     Key(
         [mod], "a",
-        lazy.spawn(f"sh {home}/.config/rofi/launchers/type-2/launcher.sh"),
+        lazy.spawn(f"sh {home}/.config/rofi/launchers/type-1/launcher.sh"),
         desc="Launch Rofi's application menu"
     ),
     Key(
@@ -149,16 +149,6 @@ keys = [
         [mod], "x",
         lazy.spawn(f"sh {home}/.config/rofi/powermenu/type-1/powermenu.sh"),
         desc="Launch Rofi's power menu"
-    ),
-    Key(
-        [mod], "r",
-        lazy.spawn("rofi -show run"),
-        desc="Launch Rofi's command menu"
-    ),
-    Key(
-        [mod], "w",
-        lazy.spawn("rofi -show window"),
-        desc="Launch Rofi's window selector"
     ),
     # Sound
     Key(

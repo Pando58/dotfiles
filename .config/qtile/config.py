@@ -307,6 +307,9 @@ screens = [
                     fontsize=20,
                     foreground=colorscheme["Blue"],
                     background=colorscheme["Crust"],
+                    mouse_callbacks={
+                        "Button1": lazy.spawn(f"sh {home}/.config/rofi/launchers/type-2/launcher.sh"),
+                    },
                 ),
                 widget.Spacer(
                     length=4,
@@ -419,12 +422,12 @@ screens = [
                 ),
                 widget.TextBox(
                     text=" ",
+                    fontsize=15,
                     background=colorscheme["Mantle"],
                     foreground=colorscheme["Red"],
-                    fontsize=15,
-                #   mouse_callbacks={
-                #       "Button1": lazy.shutdown(),
-                #   },
+                    mouse_callbacks={
+                        "Button1": lazy.spawn(f"sh {home}/.config/rofi/powermenu/type-1/powermenu.sh"),
+                    },
                 ),
             ],
             32,

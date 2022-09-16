@@ -17,6 +17,14 @@ for pkg in $(<$pkgs_aur); do
     yay -S --answerdiff None "$pkg"
 done
 
+# Move everything to home and set dotfiles git folder to ~/.dotfiles
+shopt -s dotglob
+mv $(pwd)/.git $(pwd)/.dotfiles
+cp -r $(pwd)/* $HOME
+echo "Deleting: $(pwd)"
+echo "(y/n)"
+rm -rI $(pwd)
+
 # Generate default user folders
 xdg-user-dirs-update
 

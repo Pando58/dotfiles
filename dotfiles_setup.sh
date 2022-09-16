@@ -17,6 +17,9 @@ for pkg in $(<$pkgs_aur); do
     yay -S --answerdiff None "$pkg"
 done
 
+# Launch wm from custom script
+sudo cp $(pwd)/.xsessions/*.desktop /usr/share/xsessions
+
 # Move everything to home and set dotfiles git folder to ~/.dotfiles
 shopt -s dotglob
 mv $(pwd)/.git $(pwd)/.dotfiles

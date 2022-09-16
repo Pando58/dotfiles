@@ -6,7 +6,8 @@ from libqtile.lazy import lazy
 
 mod = "mod4"
 terminal = "alacritty"
-browser= "brave"
+browser = "brave"
+browser_private = "brave --incognito"
 file_manager = "nemo"
 
 home=os.path.expanduser("~")
@@ -122,6 +123,11 @@ keys = [
         [mod], "b",
         lazy.spawn(browser),
         desc="Launch browser (" + browser + ")"
+    ),
+    Key(
+        [mod, "shift"], "b",
+        lazy.spawn(browser_private),
+        desc="Launch browser (" + browser_private + ")"
     ),
     # Rofi menus
     Key(

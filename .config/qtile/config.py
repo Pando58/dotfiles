@@ -304,7 +304,7 @@ screens = [
                     foreground=colorscheme["Blue"],
                     background=colorscheme["Crust"],
                     mouse_callbacks={
-                        "Button1": lazy.spawn(f"sh {home}/.config/rofi/launchers/type-2/launcher.sh"),
+                        "Button1": lazy.spawn(f"sh {home}/.config/rofi/launchers/type-1/launcher.sh"),
                     },
                 ),
                 widget.Spacer(

@@ -24,15 +24,22 @@ sudo cp $(pwd)/.xsessions/*.desktop /usr/share/xsessions
 shopt -s dotglob
 mv $(pwd)/.git $(pwd)/.dotfiles
 cp -r $(pwd)/* $HOME
+
 echo "Deleting: $(pwd)"
-echo "(y/n)"
-rm -rI $(pwd)
+read -p "Are you sure? (y/n): " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    rm -r $(pwd)
+else
+    echo "Aborting delete"
+    # [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
+fi
 
 # Generate default user folders
 xdg-user-dirs-update
 
 # Wallpaper
-nitrogen --set-zoom-fill $HOME/Pictures/Wallpapers/949049.png
+nitrogen --set-zoom-fill --save $HOME/Pictures/Wallpapers/949049.png
 
 # mpd
 mkdir -p $HOME/.mpd/playlists

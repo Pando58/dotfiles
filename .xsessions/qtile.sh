@@ -1,4 +1,5 @@
-picom -b
+lxsession &
 nitrogen --restore &
-qtile start
+picom -b
 nm-applet &
+qtile start

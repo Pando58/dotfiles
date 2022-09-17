@@ -229,10 +229,16 @@ groups.extend([
 ])
 
 keys.extend([
-    KeyChord([mod], "g", [
-        Key([], "t", lazy.group["scratchpad"].dropdown_toggle("terminal"))
-    ]),
-    Key([mod], "v", lazy.group["scratchpad"].dropdown_toggle("mixer")),
+    Key(
+        [mod, "mod1"], "t",
+        lazy.group["scratchpad"].dropdown_toggle("terminal"),
+        desc="Launch floating terminal (" + terminal + ")"
+    ),
+    Key(
+        [mod], "v",
+        lazy.group["scratchpad"].dropdown_toggle("mixer"),
+        desc="Launch floating audio mixer"
+    ),
 ])
 
 # Layouts

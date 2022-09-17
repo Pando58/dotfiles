@@ -10,8 +10,6 @@ browser = "brave"
 browser_private = "brave --incognito"
 file_manager = "nemo"
 
-show_battery = False
-
 home=os.path.expanduser("~")
 
 # Shortcuts
@@ -151,17 +149,6 @@ keys = [
         [mod], "x",
         lazy.spawn(f"sh {home}/.config/rofi/powermenu/type-1/powermenu.sh"),
         desc="Launch Rofi's power menu"
-    ),
-    # Sound
-    Key(
-        [], "XF86AudioRaiseVolume",
-        lazy.spawn("amixer -M set Master,0 5%+ unmute"),
-        desc="Launch Rofi's window selector"
-    ),
-    Key(
-        [], "XF86AudioLowerVolume",
-        lazy.spawn("amixer -M set Master,0 5%- unmute"),
-        desc="Launch Rofi's window selector"
     ),
 ]
 
@@ -359,62 +346,21 @@ bar_widgets = [
         background=colorscheme["Surface0"],
         foreground=colorscheme["Sapphire"],
     ),
-    widget.TextBox(
-        text="墳",
-        fontsize=20,
-        background=colorscheme["Sapphire"],
-        foreground=colorscheme["Crust"],
-    ),
-    widget.Spacer(
-        length=6,
-        background=colorscheme["Sapphire"],
-    ),
-    widget.Volume(
-        background=colorscheme["Sapphire"],
-        foreground=colorscheme["Crust"],
-    ),
-    widget.TextBox(
-        text="",
-        padding=0,
-        fontsize=27,
-        background=colorscheme["Sapphire"],
-        foreground=colorscheme["Peach"],
-    ),
     widget.Clock(
         format="%d-%m-%Y",
-        background=colorscheme["Peach"],
+        background=colorscheme["Sapphire"],
         foreground=colorscheme["Base"],
     ),
     widget.TextBox(
         text="",
         padding=0,
         fontsize=27,
-        background=colorscheme["Peach"],
+        background=colorscheme["Sapphire"],
         foreground=colorscheme["Base"],
     ),
     widget.Systray(
         background=colorscheme["Base"],
     ),
-]
-
-# Battery widget
-if show_battery:
-    bar_widgets.extend([
-        widget.Spacer(
-            length=10,
-            background=colorscheme["Base"],
-        ),
-        widget.TextBox(
-            text="",
-            background=colorscheme["Base"],
-        ),
-        widget.Battery(
-            format="{percent:2.0%}",
-            background=colorscheme["Base"],
-        )
-    ])
-
-bar_widgets.extend([
     widget.TextBox(
         text="",
         padding=0,
@@ -443,7 +389,7 @@ bar_widgets.extend([
             "Button1": lazy.spawn(f"sh {home}/.config/rofi/powermenu/type-1/powermenu.sh"),
         },
     ),
-])
+]
 
 # Add widgets to screens
 screens = [

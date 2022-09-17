@@ -1,16 +1,18 @@
-pkgs_pacman=$(pwd)/.pkglist/pacman
-pkgs_aur=$(pwd)/.pkglist/aur
+basedir=$(dirname "$0")
+pkgs_pacman=$basedir/.pkglist/pacman
+pkgs_aur=$basedir/.pkglist/aur
 
 # Install packages
-sudo pacman -S --needed - < $pkgs_pacman
+sudo pacman -S --needed - < "$pkgs_pacman"
 
 # Install Yay
 if ! [[ $(command -v yay) ]]; then
-    cd $HOME
+    cd "$HOME"
     git clone https://aur.archlinux.org/yay-bin.git
     cd yay-bin
     makepkg -si
-    cd $(pwd)
+    cd "$basedir"
+    rm -rf "$HOME"/yay-bin
 fi
 
 # Install yay packages
@@ -19,18 +21,18 @@ for pkg in $(<$pkgs_aur); do
 done
 
 # Launch wm from custom script
-sudo cp $(pwd)/.xsessions/*.desktop /usr/share/xsessions
+sudo cp "$basedir"/.xsessions/*.desktop /usr/share/xsessions
 
 # Move everything to home and set dotfiles git folder to ~/.dotfiles
 shopt -s dotglob
-mv $(pwd)/.git $(pwd)/.dotfiles
-cp -r $(pwd)/* $HOME
+mv "$basedir/.git" "$HOME/.dotfiles"
+cp -r "$basedir"/* "$HOME"
 
-echo "Deleting: $(pwd)"
+echo "Deleting: $basedir"
 read -p "Are you sure? (y/n): " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-    rm -r $(pwd)
+    rm -rf "$basedir"
 else
     echo "Aborting delete"
     # [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
@@ -40,7 +42,7 @@ fi
 xdg-user-dirs-update
 
 # Wallpaper
-nitrogen --set-zoom-fill --save $HOME/Pictures/Wallpapers/949049.png
+nitrogen --set-zoom-fill --save "$HOME/Pictures/Wallpapers/949049.png"
 
 # mpd
-mkdir -p $HOME/.mpd/playlists
+mkdir -p "$HOME/.mpd/playlists"

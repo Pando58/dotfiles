@@ -6,10 +6,11 @@ sudo pacman -S --needed - < $pkgs_pacman
 
 # Install Yay
 if ! [[ $(command -v yay) ]]; then
+    cd $HOME
     git clone https://aur.archlinux.org/yay-bin.git
     cd yay-bin
     makepkg -si
-    cd ..
+    cd $(pwd)
 fi
 
 # Install yay packages

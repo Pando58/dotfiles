@@ -10,6 +10,8 @@ browser = "brave"
 browser_private = "brave --incognito"
 file_manager = "nemo"
 
+show_battery = False
+
 home=os.path.expanduser("~")
 
 # Shortcuts
@@ -284,7 +286,7 @@ layouts = [
     layout.Max(),
 ]
 
-# Screens and bars
+# Widgets
 widget_defaults = dict(
     font="JetBrains Mono Nerd Font Bold",
     fontsize=14,
@@ -293,139 +295,161 @@ widget_defaults = dict(
 
 extension_defaults = widget_defaults.copy()
 
+bar_widgets = [
+    widget.TextBox(
+        text="",
+        padding=7,
+        fontsize=20,
+        foreground=colorscheme["Blue"],
+        background=colorscheme["Crust"],
+        mouse_callbacks={
+            "Button1": lazy.spawn(f"sh {home}/.config/rofi/launchers/type-1/launcher.sh"),
+        },
+    ),
+    widget.Spacer(
+        length=4,
+        background=colorscheme["Crust"],
+    ),
+    widget.TextBox(
+        text="",
+        padding=0,
+        fontsize=27,
+        foreground=colorscheme["Crust"],
+        background=colorscheme["Surface2"],
+    ),
+    widget.GroupBox(
+        disable_drag=True,
+        highlight_method="text",
+        urgent_alert_method="text",
+        this_current_screen_border=colorscheme["Green"],
+        active=colorscheme["Text"],
+        inactive=colorscheme["Surface0"],
+        urgent_text=colorscheme["Red"],
+        fontsize=20,
+        background=colorscheme["Surface2"],
+    ),
+    widget.TextBox(
+        text="",
+        padding=0,
+        fontsize=27,
+        foreground=colorscheme["Surface2"],
+        background=colorscheme["Sapphire"],
+    ),
+    widget.CurrentLayoutIcon(
+        custom_icon_paths=[f"{home}/.config/qtile/layout-icons"],
+        scale=0.67,
+        padding=0,
+        background=colorscheme["Sapphire"],
+    ),
+    widget.TextBox(
+        text="",
+        padding=0,
+        fontsize=27,
+        foreground=colorscheme["Sapphire"],
+        background=colorscheme["Surface0"],
+    ),
+    widget.WindowName(
+        padding=10,
+        background=colorscheme["Surface0"],
+    ),
+    widget.TextBox(
+        text="",
+        padding=0,
+        fontsize=27,
+        background=colorscheme["Surface0"],
+        foreground=colorscheme["Sapphire"],
+    ),
+    widget.TextBox(
+        text="墳",
+        fontsize=20,
+        background=colorscheme["Sapphire"],
+        foreground=colorscheme["Crust"],
+    ),
+    widget.Spacer(
+        length=6,
+        background=colorscheme["Sapphire"],
+    ),
+    widget.Volume(
+        background=colorscheme["Sapphire"],
+        foreground=colorscheme["Crust"],
+    ),
+    widget.TextBox(
+        text="",
+        padding=0,
+        fontsize=27,
+        background=colorscheme["Sapphire"],
+        foreground=colorscheme["Peach"],
+    ),
+    widget.Clock(
+        format="%d-%m-%Y",
+        background=colorscheme["Peach"],
+        foreground=colorscheme["Base"],
+    ),
+    widget.TextBox(
+        text="",
+        padding=0,
+        fontsize=27,
+        background=colorscheme["Peach"],
+        foreground=colorscheme["Base"],
+    ),
+    widget.Systray(
+        background=colorscheme["Base"],
+    ),
+]
+
+# Battery widget
+if show_battery:
+    bar_widgets.extend([
+        widget.Spacer(
+            length=10,
+            background=colorscheme["Base"],
+        ),
+        widget.TextBox(
+            text="",
+            background=colorscheme["Base"],
+        ),
+        widget.Battery(
+            format="{percent:2.0%}",
+            background=colorscheme["Base"],
+        )
+    ])
+
+bar_widgets.extend([
+    widget.TextBox(
+        text="",
+        padding=0,
+        fontsize=27,
+        background=colorscheme["Base"],
+        foreground=colorscheme["Green"],
+    ),
+    widget.Clock(
+        format="%H:%M:%S",
+        background=colorscheme["Green"],
+        foreground=colorscheme["Mantle"],
+    ),
+    widget.TextBox(
+        text="",
+        padding=0,
+        fontsize=27,
+        background=colorscheme["Green"],
+        foreground=colorscheme["Mantle"],
+    ),
+    widget.TextBox(
+        text=" ",
+        fontsize=15,
+        background=colorscheme["Mantle"],
+        foreground=colorscheme["Red"],
+        mouse_callbacks={
+            "Button1": lazy.spawn(f"sh {home}/.config/rofi/powermenu/type-1/powermenu.sh"),
+        },
+    ),
+])
+
+# Add widgets to screens
 screens = [
     Screen(
         top=bar.Bar(
-            [
-                widget.TextBox(
-                    text="",
-                    padding=7,
-                    fontsize=20,
-                    foreground=colorscheme["Blue"],
-                    background=colorscheme["Crust"],
-                    mouse_callbacks={
-                        "Button1": lazy.spawn(f"sh {home}/.config/rofi/launchers/type-1/launcher.sh"),
-                    },
-                ),
-                widget.Spacer(
-                    length=4,
-                    background=colorscheme["Crust"],
-                ),
-                widget.TextBox(
-                    text="",
-                    padding=0,
-                    fontsize=27,
-                    foreground=colorscheme["Crust"],
-                    background=colorscheme["Surface2"],
-                ),
-                widget.GroupBox(
-                    disable_drag=True,
-                    highlight_method="text",
-                    urgent_alert_method="text",
-                    this_current_screen_border=colorscheme["Green"],
-                    active=colorscheme["Text"],
-                    inactive=colorscheme["Surface0"],
-                    urgent_text=colorscheme["Red"],
-                    fontsize=20,
-                    background=colorscheme["Surface2"],
-                ),
-                widget.TextBox(
-                    text="",
-                    padding=0,
-                    fontsize=27,
-                    foreground=colorscheme["Surface2"],
-                    background=colorscheme["Sapphire"],
-                ),
-                widget.CurrentLayoutIcon(
-                    custom_icon_paths=[f"{home}/.config/qtile/layout-icons"],
-                    scale=0.67,
-                    padding=0,
-                    background=colorscheme["Sapphire"],
-                ),
-                widget.TextBox(
-                    text="",
-                    padding=0,
-                    fontsize=27,
-                    foreground=colorscheme["Sapphire"],
-                    background=colorscheme["Surface0"],
-                ),
-                widget.WindowName(
-                    padding=10,
-                    background=colorscheme["Surface0"],
-                ),
-                widget.Chord(),
-                widget.TextBox(
-                    text="",
-                    padding=0,
-                    fontsize=27,
-                    background=colorscheme["Surface0"],
-                    foreground=colorscheme["Sapphire"],
-                ),
-                widget.TextBox(
-                    text="墳",
-                    fontsize=20,
-                    background=colorscheme["Sapphire"],
-                    foreground=colorscheme["Crust"],
-                ),
-                widget.Spacer(
-                    length=6,
-                    background=colorscheme["Sapphire"],
-                ),
-                widget.Volume(
-                    background=colorscheme["Sapphire"],
-                    foreground=colorscheme["Crust"],
-                ),
-                widget.TextBox(
-                    text="",
-                    padding=0,
-                    fontsize=27,
-                    background=colorscheme["Sapphire"],
-                    foreground=colorscheme["Peach"],
-                ),
-                widget.Clock(
-                    format="%d-%m-%Y",
-                    background=colorscheme["Peach"],
-                    foreground=colorscheme["Base"],
-                ),
-                widget.TextBox(
-                    text="",
-                    padding=0,
-                    fontsize=27,
-                    background=colorscheme["Peach"],
-                    foreground=colorscheme["Base"],
-                ),
-                widget.Systray(
-                    background=colorscheme["Base"],
-                ),
-                widget.TextBox(
-                    text="",
-                    padding=0,
-                    fontsize=27,
-                    background=colorscheme["Base"],
-                    foreground=colorscheme["Green"],
-                ),
-                widget.Clock(
-                    format="%H:%M:%S",
-                    background=colorscheme["Green"],
-                    foreground=colorscheme["Mantle"],
-                ),
-                widget.TextBox(
-                    text="",
-                    padding=0,
-                    fontsize=27,
-                    background=colorscheme["Green"],
-                    foreground=colorscheme["Mantle"],
-                ),
-                widget.TextBox(
-                    text=" ",
-                    fontsize=15,
-                    background=colorscheme["Mantle"],
-                    foreground=colorscheme["Red"],
-                    mouse_callbacks={
-                        "Button1": lazy.spawn(f"sh {home}/.config/rofi/powermenu/type-1/powermenu.sh"),
-                    },
-                ),
-            ],
+            bar_widgets,
             32,
             margin = [0, 0, 6, 0],
             background = "#202020"

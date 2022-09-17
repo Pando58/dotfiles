@@ -150,6 +150,17 @@ keys = [
         lazy.spawn(f"sh {home}/.config/rofi/powermenu/type-1/powermenu.sh"),
         desc="Launch Rofi's power menu"
     ),
+    # Sound
+    Key(
+        [], "XF86AudioRaiseVolume",
+        lazy.spawn("amixer -M set Master,0 5%+ unmute"),
+        desc="Launch Rofi's window selector"
+    ),
+    Key(
+        [], "XF86AudioLowerVolume",
+        lazy.spawn("amixer -M set Master,0 5%- unmute"),
+        desc="Launch Rofi's window selector"
+    ),
 ]
 
 # Workspaces

@@ -205,25 +205,29 @@ for i in groups:
         ),
     ])
 
+scratchpad_defaults = {
+    "width": 0.4,
+    "height": 0.5,
+    "x": 0.3,
+    "y": 0.25,
+    "on_focus_lost_hide": False,
+}
+
 groups.extend([
     ScratchPad(
-       "scratchpad", [
-           DropDown(
-               "terminal", terminal,
-               on_focus_lost_hide=False,
-               width=0.4,
-               height=0.5,
-               x=0.3,
-               y=0.25,
-           ),
-           DropDown(
-               "mixer", terminal + " -e pulsemixer",
-               on_focus_lost_hide=False,
-               width=0.4,
-               height=0.5,
-               x=0.3,
-               y=0.25,
-           ),
+        "scratchpad", [
+            DropDown(
+                "terminal", terminal,
+                **scratchpad_defaults,
+            ),
+            DropDown(
+                "file_manager", file_manager,
+                **scratchpad_defaults,
+            ),
+            DropDown(
+                "mixer", terminal + " -e pulsemixer",
+                **scratchpad_defaults,
+            ),
        ]
     ),
 ])
@@ -233,6 +237,11 @@ keys.extend([
         [mod, "mod1"], "t",
         lazy.group["scratchpad"].dropdown_toggle("terminal"),
         desc="Launch floating terminal (" + terminal + ")"
+    ),
+    Key(
+        [mod, "mod1"], "e",
+        lazy.group["scratchpad"].dropdown_toggle("file_manager"),
+        desc="Launch floating file manager (" + file_manager + ")"
     ),
     Key(
         [mod], "v",

@@ -255,9 +255,9 @@ for i in range(len(screens_config)):
         )
 
 @hook.subscribe.startup_complete
-def assign_groups_to_screens(scr):
+def assign_groups_to_screens():
     for i in range(len(screens_config)):
-        qtile.groups_map[f"{scr+1}_1"].cmd_toscreen(scr)
+        qtile.groups_map[f"{i+1}_1"].cmd_toscreen(i)
 
 for j in range(1, n_groups + 1):
     keys.extend([

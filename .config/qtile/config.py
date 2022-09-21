@@ -1,6 +1,6 @@
 import os
 
-from libqtile import bar, layout, widget
+from libqtile import qtile, hook, bar, layout, widget
 from libqtile.config import Click, Drag, Group, ScratchPad, DropDown, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
 
@@ -163,45 +163,113 @@ keys = [
     ),
 ]
 
+# Layouts
+colorscheme = {
+"Rosewater" : "#f5e0dc",
+"Flamingo"  : "#f2cdcd",
+"Pink"      : "#f5c2e7",
+"Mauve"     : "#cba6f7",
+"Red"       : "#f38ba8",
+"Maroon"    : "#eba0ac",
+"Peach"     : "#fab387",
+"Yellow"    : "#f9e2af",
+"Green"     : "#a6e3a1",
+"Teal"      : "#94e2d5",
+"sky"       : "#89dceb",
+"Sapphire"  : "#74c7ec",
+"Blue"      : "#89b4fa",
+"Lavender"  : "#b4befe",
+"Text"      : "#cdd6f4",
+"Subtext1"  : "#bac2de",
+"Subtext0"  : "#a6adc8",
+"Overlay2"  : "#9399b2",
+"Overlay1"  : "#7f849c",
+"Overlay0"  : "#6c7086",
+"Surface2"  : "#585b70",
+"Surface1"  : "#45475a",
+"Surface0"  : "#313244",
+"Base"      : "#1e1e2e",
+"Mantle"    : "#181825",
+"Crust"     : "#11111b",
+}
+
+layout_theme = {
+    "border_width": 2,
+    "border_normal": colorscheme["Overlay0"],
+    "border_focus": colorscheme["Sapphire"],
+    "margin": 6,
+}
+
 # Workspaces
-groups = [
-    Group(
-        "1",
-        label="",
-    ),
-    Group(
-        "2",
-        label="",
-    ),
-    Group(
-        "3",
-        label="",
-    ),
-    Group(
-        "4",
-        label="",
-    ),
-    Group(
-        "5",
-        label="",
-    ),
+n_groups = 5
+
+screens_config = [
+    {
+        "layouts": [
+            layout.Columns(
+                **layout_theme,
+                border_focus_stack=colorscheme["Green"],
+                border_normal_stack=layout_theme["border_normal"],
+                border_on_single=True,
+                grow_amount=1,
+                # fair=True,
+            ),
+            layout.Max(),
+        ]
+    },
+    {
+        "layouts": [
+            layout.Bsp(
+                **layout_theme,
+                border_on_single=True,
+                grow_amount=1,
+            ),
+            layout.Max(),
+        ]
+    },
+    {
+        "layouts": [
+            layout.Columns(
+                **layout_theme,
+                border_focus_stack=colorscheme["Green"],
+                border_normal_stack=layout_theme["border_normal"],
+                border_on_single=True,
+                grow_amount=1,
+                # fair=True,
+            ),
+            layout.Max(),
+        ]
+    },
 ]
 
-for i in groups:
+groups = []
+
+for i in range(len(screens_config)):
+    for j in range(n_groups):
+        groups.append(
+            Group(
+                f"{i+1}_{j+1}",
+                label="",
+                layouts=screens_config[i]["layouts"]
+            )
+        )
+
+@hook.subscribe.startup_complete
+def assign_groups_to_screens(scr):
+    for i in range(len(screens_config)):
+        qtile.groups_map[f"{scr+1}_1"].cmd_toscreen(scr)
+
+for j in range(1, n_groups + 1):
     keys.extend([
-        # mod + letter of group = switch to group
+        # mod + letter of group = switch to group in screen 0
         Key(
-            [mod],
-            i.name,
-            lazy.group[i.name].toscreen(),
-            desc="Switch to group {}".format(i.name),
+            [mod], str(j),
+            lazy.group[f"1_{j}"].toscreen(0)
         ),
-        # mod + shift + letter of group = switch to and move focused window to group
+        # mod + shift + letter of group = switch to and move focused window to group in screen 0
         Key(
-            [mod, "shift"],
-            i.name,
-            lazy.window.togroup(i.name, switch_group=True),
-            desc="Switch to & move focused window to group {}".format(i.name),
+            [mod, "shift"], str(j),
+            lazy.window.togroup(f"1_{j}", switch_group=False),
         ),
     ])
 
@@ -250,55 +318,6 @@ keys.extend([
     ),
 ])
 
-# Layouts
-colorscheme = {
-"Rosewater" : "#f5e0dc",
-"Flamingo"  : "#f2cdcd",
-"Pink"      : "#f5c2e7",
-"Mauve"     : "#cba6f7",
-"Red"       : "#f38ba8",
-"Maroon"    : "#eba0ac",
-"Peach"     : "#fab387",
-"Yellow"    : "#f9e2af",
-"Green"     : "#a6e3a1",
-"Teal"      : "#94e2d5",
-"sky"       : "#89dceb",
-"Sapphire"  : "#74c7ec",
-"Blue"      : "#89b4fa",
-"Lavender"  : "#b4befe",
-"Text"      : "#cdd6f4",
-"Subtext1"  : "#bac2de",
-"Subtext0"  : "#a6adc8",
-"Overlay2"  : "#9399b2",
-"Overlay1"  : "#7f849c",
-"Overlay0"  : "#6c7086",
-"Surface2"  : "#585b70",
-"Surface1"  : "#45475a",
-"Surface0"  : "#313244",
-"Base"      : "#1e1e2e",
-"Mantle"    : "#181825",
-"Crust"     : "#11111b",
-}
-
-layout_theme = {
-    "border_width": 2,
-    "border_normal": colorscheme["Overlay0"],
-    "border_focus": colorscheme["Sapphire"],
-    "margin": 6,
-}
-
-layouts = [
-    layout.Columns(
-        **layout_theme,
-        border_focus_stack=colorscheme["Green"],
-        border_normal_stack=layout_theme["border_normal"],
-        border_on_single=True,
-        grow_amount=1,
-        # fair=True,
-    ),
-    layout.Max(),
-]
-
 # Widgets
 widget_defaults = dict(
     font="JetBrains Mono Nerd Font Bold",
@@ -331,6 +350,7 @@ bar_widgets = [
         background=colorscheme["Surface2"],
     ),
     widget.GroupBox(
+        visible_groups=[f"1_{i+1}" for i in range(n_groups)],
         disable_drag=True,
         highlight_method="text",
         urgent_alert_method="text",
@@ -349,7 +369,7 @@ bar_widgets = [
         background=colorscheme["Sapphire"],
     ),
     widget.CurrentLayoutIcon(
-        custom_icon_paths=[f"{home}/.config/qtile/layout-icons"],
+        #custom_icon_paths=[f"{home}/.config/qtile/layout-icons"],
         scale=0.67,
         padding=0,
         background=colorscheme["Sapphire"],
@@ -431,6 +451,53 @@ screens = [
         right=bar.Gap(6),
     ),
 ]
+
+for i in range(len(screens_config) - 1):
+    screens.append(
+        Screen(
+            top=bar.Bar(
+                [
+                    widget.GroupBox(
+                        visible_groups=[f"{i+2}_{j+1}" for j in range(n_groups)],
+                        disable_drag=True,
+                        highlight_method="text",
+                        urgent_alert_method="text",
+                        this_current_screen_border=colorscheme["Green"],
+                        active=colorscheme["Text"],
+                        inactive=colorscheme["Surface0"],
+                        urgent_text=colorscheme["Red"],
+                        fontsize=20,
+                        background=colorscheme["Surface2"],
+                    ),
+                    widget.TextBox(
+                        text="",
+                        padding=0,
+                        fontsize=27,
+                        foreground=colorscheme["Surface2"],
+                        background=colorscheme["Sapphire"],
+                    ),
+                    widget.CurrentLayoutIcon(
+                        scale=0.67,
+                        padding=0,
+                        background=colorscheme["Sapphire"],
+                    ),
+                    widget.TextBox(
+                        text="",
+                        padding=0,
+                        fontsize=27,
+                        foreground=colorscheme["Sapphire"],
+                        background=colorscheme["Surface0"],
+                    ),
+                ],
+                32,
+                margin = [0, 0, 6, 0],
+                background = colorscheme["Surface0"],
+            ),
+            bottom=bar.Gap(6),
+            left=bar.Gap(6),
+            right=bar.Gap(6),
+        )
+    )
 
 # Drag floating layouts.
 mouse = [

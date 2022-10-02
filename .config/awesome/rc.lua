@@ -576,7 +576,8 @@ awful.rules.rules = {
             keys = clientkeys,
             buttons = clientbuttons,
             screen = awful.screen.preferred,
-            placement = awful.placement.no_overlap+awful.placement.no_offscreen
+            placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+            size_hints_honor = false,
         }
     },
 
@@ -627,6 +628,13 @@ awful.rules.rules = {
         properties = {
             titlebars_enabled = true
         }
+    },
+    
+    {
+        rule = { class = "Steam" },
+        properties = {
+            titlebars_enabled = false,
+        },
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.

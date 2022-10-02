@@ -2,7 +2,7 @@ import:
   - ~/.config/alacritty/colorschemes/Doom_one.yaml
 
 window:
-  opacity: 1.0
+  opacity: 0.85
   dynamic_padding: true
   padding:
     x: 6

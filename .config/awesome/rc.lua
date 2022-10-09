@@ -421,6 +421,11 @@ globalkeys = gears.table.join(
         { mod, "Shift" }, "b",
         function () awful.spawn("brave --incognito") end,
         { group = "launcher", description = "Launch web browser (brave --incognito)" }
+    ),
+    awful.key(
+        { mod }, "e",
+        function () awful.spawn("nemo") end,
+        { group = "launcher", description = "Launch file explorer" }
     )
 )
 

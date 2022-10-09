@@ -426,6 +426,11 @@ globalkeys = gears.table.join(
         { mod }, "e",
         function () awful.spawn("nemo") end,
         { group = "launcher", description = "Launch file explorer" }
+    ),
+    awful.key(
+        { mod, "Shift" }, "s",
+        function () awful.spawn("flameshot gui") end,
+        { group = "launcher", description = "Take a screenshot" }
     )
 )
 

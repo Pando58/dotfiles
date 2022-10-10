@@ -441,6 +441,21 @@ globalkeys = gears.table.join(
         { "Shift" }, "Print",
         function () awful.spawn("flameshot screen") end,
         { group = "launcher", description = "Take a screenshot of the current screen and copy to the clipboard" }
+    ),
+    awful.key(
+        { mod }, "v",
+        function () awful.spawn(terminal.." -e pulsemixer") end,
+        { group = "launcher", description = "Launch terminal audio mixer" }
+    ),
+    awful.key(
+        { }, "XF86AudioRaiseVolume",
+        function () awful.spawn("amixer -M set Master,0 5%+ unmute") end,
+        { group = "launcher", description = "Raise system volume" }
+    ),
+    awful.key(
+        { }, "XF86AudioLowerVolume",
+        function () awful.spawn("amixer -M set Master,0 5%- unmute") end,
+        { group = "launcher", description = "Reduce system volume" }
     )
 )
 

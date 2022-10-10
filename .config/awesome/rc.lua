@@ -431,6 +431,16 @@ globalkeys = gears.table.join(
         { mod, "Shift" }, "s",
         function () awful.spawn("flameshot gui") end,
         { group = "launcher", description = "Take a screenshot" }
+    ),
+    awful.key(
+        { }, "Print",
+        function () awful.spawn("flameshot screen -c") end,
+        { group = "launcher", description = "Take a screenshot of the current screen and copy to the clipboard" }
+    ),
+    awful.key(
+        { "Shift" }, "Print",
+        function () awful.spawn("flameshot screen") end,
+        { group = "launcher", description = "Take a screenshot of the current screen and copy to the clipboard" }
     )
 )
 

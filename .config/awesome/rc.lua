@@ -254,7 +254,7 @@ awful.screen.connect_for_each_screen(function(s)
         },
         {
             layout = wibox.layout.fixed.horizontal,
-            wibox.widget.textclock(),
+            wibox.widget.textclock("%a %b %d, %H:%M:%S", 1),
         },
         -- s.mytasklist,
         {

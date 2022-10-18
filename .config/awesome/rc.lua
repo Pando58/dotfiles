@@ -449,12 +449,12 @@ globalkeys = gears.table.join(
     ),
     awful.key(
         { }, "XF86AudioRaiseVolume",
-        function () awful.spawn("amixer -M set Master,0 5%+ unmute") end,
+        function () awful.spawn("pulsemixer --change-volume +5") end,
         { group = "launcher", description = "Raise system volume" }
     ),
     awful.key(
         { }, "XF86AudioLowerVolume",
-        function () awful.spawn("amixer -M set Master,0 5%- unmute") end,
+        function () awful.spawn("pulsemixer --change-volume -5") end,
         { group = "launcher", description = "Reduce system volume" }
     )
 )

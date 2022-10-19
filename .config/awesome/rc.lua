@@ -636,7 +636,6 @@ awful.rules.rules = {
             size_hints_honor = false,
         }
     },
-
     -- Floating clients.
     {
         rule_any = {
@@ -669,23 +668,30 @@ awful.rules.rules = {
             }
         },
         properties = {
-            floating = true
+            floating = true,
         }
     },
-
-    -- Add titlebars to normal clients and dialogs
     {
         rule_any = {
             type = {
                 "normal",
-                "dialog"
             }
         },
         properties = {
-            titlebars_enabled = true
+            titlebars_enabled = true,
         }
     },
-    
+    {
+        rule_any = {
+            type = {
+                "dialog",
+            }
+        },
+        properties = {
+            titlebars_enabled = true,
+            placement = awful.placement.centered,
+        }
+    },
     {
         rule = { class = "Steam" },
         properties = {

@@ -222,14 +222,35 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create a tasklist widget
-    --[[ s.mytasklist = awful.widget.tasklist {
+    s.mytasklist = awful.widget.tasklist {
         screen = s,
         filter = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons,
-        -- layout = {
-        --     layout = wibox.layout.fixed.horizontal,
-        -- },
-    } ]]
+        widget_template = {
+            {
+                wibox.widget.base.make_widget(),
+                forced_height = 2,
+                id = 'background_role',
+                widget = wibox.container.background,
+            },
+            {
+                {
+                    id = 'clienticon',
+                    widget = awful.widget.clienticon,
+                },
+                top = 5,
+                bottom = 7,
+                left = 5,
+                right = 5,
+                widget = wibox.container.margin
+            },
+            nil,
+            create_callback = function(self, c, index, objects) --luacheck: no unused args
+                self:get_children_by_id('clienticon')[1].client = c
+            end,
+            layout = wibox.layout.align.vertical,
+        },
+    }
 
     -- Create the wibox
     s.mywibox = awful.wibar({
@@ -251,12 +272,12 @@ awful.screen.connect_for_each_screen(function(s)
                 margins = 8,
                 s.mylayoutbox,
             },
+            s.mytasklist,
         },
         {
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.textclock("%a %b %d, %H:%M:%S", 1),
         },
-        -- s.mytasklist,
         {
             layout = wibox.layout.fixed.horizontal,
             {

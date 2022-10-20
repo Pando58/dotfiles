@@ -46,7 +46,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.init(os.getenv("HOME") .. "/.config/awesome/theme/theme.lua")
+HOME = os.getenv("HOME")
+
+beautiful.init(HOME .. "/.config/awesome/theme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -323,7 +325,8 @@ globalkeys = gears.table.join(
         { group = "awesome", description = "Reload awesome" }
     ),
     awful.key({ mod }, "r",
-        function() menubar.show() end,
+        function() awful.spawn("sh "..HOME.."/.config/rofi/launchers/type-1/launcher.sh") end,
+        -- function() menubar.show() end,
         { group = "launcher", description = "Show menubar" }
     ),
 

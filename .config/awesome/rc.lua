@@ -480,6 +480,11 @@ globalkeys = gears.table.join(
         { }, "XF86AudioLowerVolume",
         function () awful.spawn("pulsemixer --change-volume -5") end,
         { group = "launcher", description = "Reduce system volume" }
+    ),
+    awful.key(
+        { mod }, ".",
+        function () awful.spawn("rofimoji") end,
+        { group = "launcher", description = "Launch emoji picker" }
     )
 )
 

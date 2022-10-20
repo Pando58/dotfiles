@@ -14,6 +14,8 @@ xdg-user-dirs
 picom
 nitrogen
 rofi
+rofimoji
+xdotool
 arandr
 nemo
 nemo-fileroller

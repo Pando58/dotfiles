@@ -11,6 +11,8 @@ alias logout="kill -9 -1"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias dfs="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
+nvm use lts --silent
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end

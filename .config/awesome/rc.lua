@@ -385,10 +385,25 @@ globalkeys = gears.table.join(
         function () awful.screen.focus_relative(1) end,
         { group = "screen", description = "Focus right screen" }
     ),
+    awful.key(
+        { mod }, "[",
+        function () awful.screen.focus_relative(-1) end,
+        { group = "screen", description = "Focus left screen" }
+    ),
+    awful.key(
+        { mod }, "]",
+        function () awful.screen.focus_relative(1) end,
+        { group = "screen", description = "Focus right screen" }
+    ),
 
     -- Layout controls
     awful.key(
         { mod }, "+",
+        function () awful.tag.incmwfact(0.02) end,
+        { group = "layout", description = "Increase master size" }
+    ),
+    awful.key(
+        { mod }, "=",
         function () awful.tag.incmwfact(0.02) end,
         { group = "layout", description = "Increase master size" }
     ),
@@ -403,12 +418,22 @@ globalkeys = gears.table.join(
         { group = "layout", description = "Increase the number of master clients" }
     ),
     awful.key(
+        { mod, "Shift" }, "=",
+        function () awful.tag.incnmaster(1, nil, true) end,
+        { group = "layout", description = "Increase the number of master clients" }
+    ),
+    awful.key(
         { mod, "Shift" }, "-",
         function () awful.tag.incnmaster(-1, nil, true) end,
         { group = "layout", description = "Decrease the number of master clients" }
     ),
     awful.key(
         { mod, "Control" }, "+",
+        function () awful.tag.incncol(1, nil, true)    end,
+        { group = "layout", description = "increase the number of columns" }
+    ),
+    awful.key(
+        { mod, "Control" }, "=",
         function () awful.tag.incncol(1, nil, true)    end,
         { group = "layout", description = "increase the number of columns" }
     ),
@@ -526,6 +551,16 @@ clientkeys = gears.table.join(
     ),
     awful.key(
         { mod, "Shift" }, "{",
+        function (c) c:move_to_screen(c.screen.index-1) end,
+        { group = "client", description = "Move window to previous screen" }
+    ),
+    awful.key(
+        { mod, "Shift" }, "]",
+        function (c) c:move_to_screen(c.screen.index+1) end,
+        { group = "client", description = "Move window to next screen" }
+    ),
+    awful.key(
+        { mod, "Shift" }, "[",
         function (c) c:move_to_screen(c.screen.index-1) end,
         { group = "client", description = "Move window to previous screen" }
     ),

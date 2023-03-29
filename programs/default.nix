@@ -8,5 +8,6 @@
     ./alacritty.nix
     ./rofi.nix
     ./brave.nix
+    ./vscodium.nix
   ];
 }

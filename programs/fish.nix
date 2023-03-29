@@ -6,5 +6,10 @@
     fish
   ];
 
+  xdg.configFile.fish = {
+    source = ../config/fish;
+    recursive = true;
+  };
+
   # programs.fish.enable = true;
 }

@@ -9,5 +9,6 @@
     ./rofi.nix
     ./brave.nix
     ./vscodium.nix
+    ./nodejs.nix
   ];
 }

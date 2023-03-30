@@ -1,5 +1,5 @@
 {
-  # description = "Home Manager configuration of Jane Doe";
+  # description = "Pando's NixOS dotfiles config";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
@@ -12,8 +12,22 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       username = "user";
+      hostname = "nixos";
     in {
-      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        modules = [
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${username} = import ./home.nix;
+          }
+        ];
+      };
+      /*homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         modules = [
@@ -30,6 +44,6 @@
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
-      };
+      };*/
     };
 }

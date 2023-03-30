@@ -5,6 +5,7 @@
 }: let
   username = "user";
 in {
+  # Create user
   users.users.${username} = {
     isNormalUser = true;
     description = "User";
@@ -12,9 +13,30 @@ in {
     packages = with pkgs; [];
   };
 
+  # Programs
   services.xserver.enable = true;
   services.xserver.windowManager.awesome.enable = true;
 
+  programs.dconf.enable = true; # Needed for GTK
+
+  # Fonts
+  fonts = {
+    enableDefaultFonts = true;
+    
+    fonts = with pkgs; [
+      inter
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    ];
+
+    fontconfig.defaultFonts = {
+      sansSerif = [ "Inter" ];
+      monospace = [ "JetBrainsMono" ];
+    };
+  };
+
+  # environment.variables.XCURSOR_SIZE = "32"; # home.pointerCursor.size does not work
+
+  # Home Manager
   home-manager.users.${username} = {
     home = {
       inherit username stateVersion;
@@ -34,8 +56,23 @@ in {
       "rust"
     ];
 
-    home.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    ];
+    gtk = {
+      enable = true;
+
+      theme = {
+        name = "Arc-Dark";
+        package = pkgs.arc-theme;
+      };
+
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
+      };
+    };
+
+    home.pointerCursor = {
+        name = "Vanilla-DMZ";
+        package = pkgs.vanilla-dmz;
+    };
   };
 }

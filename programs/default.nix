@@ -11,5 +11,6 @@
     ./brave.nix
     ./vscodium.nix
     ./nodejs.nix
+    ./rust.nix
   ];
 }

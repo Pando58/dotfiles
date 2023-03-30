@@ -50,6 +50,7 @@ in {
       "neofetch"
       "alacritty"
       "rofi"
+      "flameshot"
       "brave"
       "vscodium"
       "nodejs"

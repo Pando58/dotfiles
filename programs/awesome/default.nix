@@ -2,7 +2,7 @@
   ...
 }: {
   xdg.configFile.awesome = {
-    source = ../config/awesome;
+    source = ./awesome;
     recursive = true;
   };
 }

@@ -21,8 +21,17 @@ in {
       homeDirectory = "/home/${username}";
     };
 
-    imports = [
-      ../../programs
+    imports = map (f: ../../programs + "/${f}") [
+      "git"
+      "awesome"
+      "fish"
+      "neofetch"
+      "alacritty"
+      "rofi"
+      "brave"
+      "vscodium"
+      "nodejs"
+      "rust"
     ];
 
     home.packages = with pkgs; [

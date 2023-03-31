@@ -15,8 +15,6 @@ in {
 
   # Programs
   services.xserver.enable = true;
-  services.xserver.windowManager.awesome.enable = true;
-
   programs.dconf.enable = true; # Needed for GTK
 
   # Fonts
@@ -33,6 +31,17 @@ in {
       monospace = [ "JetBrainsMono" ];
     };
   };
+
+  # Sessions
+  services.xserver.displayManager.session = [
+    {
+      name = "awesome";
+      manage = "window";
+      start = ''
+        awesome
+      '';
+    }
+  ];
 
   # environment.variables.XCURSOR_SIZE = "32"; # home.pointerCursor.size does not work
 

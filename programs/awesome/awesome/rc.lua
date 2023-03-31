@@ -320,12 +320,12 @@ globalkeys = gears.table.join(
         { group="awesome", description="Show shortcuts popup" }
     ),
     awful.key(
-        { mod, "Mod1" }, "r",
+        { mod, "Control" }, "r",
         awesome.restart,
         { group = "awesome", description = "Reload awesome" }
     ),
     awful.key({ mod }, "space",
-        function() awful.spawn("rofi -show drun") end,
+        function() awful.spawn("sh "..HOME.."/.config/rofi/launcher/launcher.sh") end,
         -- function() menubar.show() end,
         { group = "launcher", description = "Show menubar" }
     ),
@@ -508,7 +508,7 @@ globalkeys = gears.table.join(
     ),
     awful.key(
         { mod }, ".",
-        function () awful.spawn("rofimoji") end,
+        function () awful.spawn("rofimoji -f emojis math") end,
         { group = "launcher", description = "Launch emoji picker" }
     )
 )

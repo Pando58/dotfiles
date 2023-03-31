@@ -7,5 +7,10 @@
     rofimoji
   ];
 
+  xdg.configFile.rofi = {
+    source = ./rofi;
+    recursive = true;
+  };
+
   #programs.rofi.enable = true;
 }

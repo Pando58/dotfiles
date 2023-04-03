@@ -72,6 +72,7 @@ in {
       "pavucontrol"
       "nodejs"
       "rust"
+      "heroic"
     ];
 
     gtk = {

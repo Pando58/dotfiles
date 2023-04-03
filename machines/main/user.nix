@@ -16,6 +16,7 @@ in {
   # Programs
   services.xserver.enable = true;
   programs.dconf.enable = true; # Needed for GTK
+  programs.steam.enable = true;
 
   # Fonts
   fonts = {

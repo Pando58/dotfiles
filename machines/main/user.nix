@@ -65,6 +65,7 @@ in {
       "feh"
       "brave"
       "vscodium"
+      "pcmanfm"
       "nodejs"
       "rust"
     ];

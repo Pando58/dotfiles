@@ -3,12 +3,12 @@
   stateVersion,
   ...
 }: let
-  username = "user";
+  username = "pando";
 in {
   # Create user
   users.users.${username} = {
     isNormalUser = true;
-    description = "User";
+    description = "Pando";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };

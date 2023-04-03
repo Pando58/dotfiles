@@ -23,7 +23,7 @@
 
       modules = [
         home-manager.nixosModules.home-manager
-        machines/vm
+        machines/main
       ];
     };
   };

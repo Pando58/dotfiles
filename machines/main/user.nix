@@ -40,6 +40,7 @@ in {
       manage = "window";
       start = ''
         xrandr --output DP-0 --mode 2560x1440 --pos 1920x480 --primary --output HDMI-0 --mode 1920x1080 --pos 4480x60 --rotate left --output DP-5 --mode 1920x1080 --pos 0x580
+        picom &
         awesome
       '';
     }
@@ -57,6 +58,7 @@ in {
     imports = map (f: ../../programs + "/${f}") [
       "git"
       "awesome"
+      "picom"
       "fish"
       "neofetch"
       "alacritty"

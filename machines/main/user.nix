@@ -16,6 +16,7 @@ in {
   # Programs
   services.xserver.enable = true;
   programs.dconf.enable = true; # Needed for GTK
+  services.gvfs.enable = true; # Mounting and trash support for file managers
   programs.steam.enable = true;
 
   # Fonts

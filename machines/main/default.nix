@@ -15,6 +15,9 @@ args @ {
   boot.loader.grub.device = "/dev/nvme0n1";
   boot.loader.grub.useOSProber = true;
 
+  # NTFS support
+  boot.supportedFilesystems = [ "ntfs" ];
+
   # Host
   networking.hostName = hostname;
   time.timeZone = "America/Mexico_City";

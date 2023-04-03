@@ -68,6 +68,7 @@ in {
       "brave"
       "vscodium"
       "pcmanfm"
+      "pavucontrol"
       "nodejs"
       "rust"
     ];

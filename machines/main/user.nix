@@ -62,6 +62,7 @@ in {
       "alacritty"
       "rofi"
       "flameshot"
+      "feh"
       "brave"
       "vscodium"
       "nodejs"

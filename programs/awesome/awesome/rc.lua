@@ -508,7 +508,7 @@ globalkeys = gears.table.join(
     ),
     awful.key(
         { mod }, ".",
-        function () awful.spawn("rofimoji -f emojis math") end,
+        function () awful.spawn("rofimoji") end,
         { group = "launcher", description = "Launch emoji picker" }
     )
 )

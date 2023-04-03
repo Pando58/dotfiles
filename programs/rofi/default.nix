@@ -12,5 +12,14 @@
     recursive = true;
   };
 
+  xdg.configFile.rofimoji = {
+    source = ./rofimoji;
+    recursive = true;
+  };
+
+  xdg.configFile."rofimoji.rc" = {
+    source = ./rofimoji.rc;
+  };
+
   #programs.rofi.enable = true;
 }

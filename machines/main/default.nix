@@ -25,6 +25,17 @@ args @ {
   # Networking
   networking.networkmanager.enable = true;
 
+  # Audio
+  security.rtkit.enable = true; # optional but recommended
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
   # Packages
   nixpkgs.config.allowUnfree = true;
 

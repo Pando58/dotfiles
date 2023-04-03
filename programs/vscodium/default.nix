@@ -80,6 +80,7 @@
           "editorInlayHint.foreground" = "#ffffff90";
         };
       };
+      "workbench.colorTheme" = "Monokai Spectrum Tweaks";
       "explorer.compactFolders" = false;
       "typescript.inlayHints.functionLikeReturnTypes.enabled" = true;
       "typescript.inlayHints.propertyDeclarationTypes.enabled" = true;

@@ -42,7 +42,9 @@ args @ {
   # Packages
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [
+    lxsession
+  ];
 
   # NVIDIA
   services.xserver.videoDrivers = [ "nvidia" ];

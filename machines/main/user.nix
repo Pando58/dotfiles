@@ -70,6 +70,7 @@ in {
       "redshift"
       "brave"
       "vscodium"
+      "geany"
       "pcmanfm"
       "pavucontrol"
       "nodejs"

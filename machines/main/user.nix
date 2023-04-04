@@ -57,6 +57,8 @@ in {
       homeDirectory = "/home/${username}";
     };
 
+    nixpkgs.config.allowUnfree = true;
+
     imports = map (f: ../../programs + "/${f}") [
       "git"
       "awesome"
@@ -76,6 +78,7 @@ in {
       "nodejs"
       "rust"
       "heroic"
+      "discord"
     ];
 
     gtk = {

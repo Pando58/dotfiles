@@ -80,6 +80,11 @@ in {
       "rust"
       "heroic"
       "discord"
+      "reaper"
+      "qpwgraph"
+      "carla"
+      "wine"
+      "yabridge"
     ];
 
     gtk = {

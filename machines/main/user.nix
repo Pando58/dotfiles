@@ -33,7 +33,7 @@ in {
       monospace = [ "JetBrainsMono" ];
     };
   };
-
+  
   # Sessions
   services.xserver.displayManager.session = [
     {

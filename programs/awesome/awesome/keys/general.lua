@@ -2,7 +2,7 @@ local awful = require("awful")
 local awesome = awesome
 
 return {
-    init = function(mod)
+    init = function (mod)
         return {
             awful.key(
                 { mod, "Control" }, "r",

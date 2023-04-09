@@ -74,6 +74,7 @@ local keys_global = utils.table.join(table.unpack(utils.table.join(
     get_keys("movement_wasd"),
     get_keys("layout_control"),
     get_keys("switch_layouts"),
+    get_keys("audio_controls"),
     get_keys("applications")
 )))
 

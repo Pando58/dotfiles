@@ -1,7 +1,7 @@
 local awful = require("awful")
 
 return {
-    init = function(mod)
+    init = function (mod)
         return {
             awful.key(
                 { mod }, "+",

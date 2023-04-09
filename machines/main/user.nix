@@ -69,6 +69,8 @@ in {
       "alacritty"
       "rofi"
       "flameshot"
+      "pulsemixer"
+      "playerctl"
       "feh"
       "redshift"
       "brave"

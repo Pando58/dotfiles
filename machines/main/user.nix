@@ -73,6 +73,7 @@ in {
       "playerctl"
       "feh"
       "redshift"
+      "unzip"
       "brave"
       "vscodium"
       "geany"

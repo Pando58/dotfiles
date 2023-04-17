@@ -77,6 +77,8 @@ in {
       "brave"
       "vscodium"
       "geany"
+      "neovim"
+      "gnumake"
       "pcmanfm"
       "pavucontrol"
       "nodejs"

@@ -9,15 +9,16 @@ in {
   users.users.${username} = {
     isNormalUser = true;
     description = "Pando";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [];
   };
 
   # Programs
   services.xserver.enable = true;
-  programs.dconf.enable = true; # Needed for GTK
+  programs.dconf.enable = true; # Needed for GTK and virtualization
   services.gvfs.enable = true; # Mounting and trash support for file managers
   programs.steam.enable = true;
+  virtualisation.libvirtd.enable = true;
 
   # Fonts
   fonts = {
@@ -90,6 +91,7 @@ in {
       "carla"
       "wine"
       "yabridge"
+      "virt-manager"
     ];
 
     gtk = {

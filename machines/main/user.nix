@@ -20,10 +20,16 @@ in {
   programs.steam.enable = true;
   virtualisation.libvirtd.enable = true;
 
+  # MySQL / MariaDB
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
+  };
+
   # Fonts
   fonts = {
     enableDefaultFonts = true;
-    
+
     fonts = with pkgs; [
       inter
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
@@ -34,7 +40,7 @@ in {
       monospace = [ "JetBrainsMono" ];
     };
   };
-  
+
   # Sessions
   services.xserver.displayManager.session = [
     {

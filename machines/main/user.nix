@@ -51,6 +51,7 @@ in {
         xrandr --output DP-4 --mode 2560x1440 --pos 1920x480 --primary --output HDMI-0 --mode 1920x1080 --pos 4480x60 --rotate left --output DP-1 --mode 1920x1080 --pos 0x580
         redshift -P -O 4500 -g 1 -b 1
         picom &
+        sxhkd &
         awesome
       '';
     }
@@ -70,6 +71,7 @@ in {
     imports = map (f: ../../programs + "/${f}") [
       "git"
       "awesome"
+      "sxhkd"
       "picom"
       "fish"
       "neofetch"

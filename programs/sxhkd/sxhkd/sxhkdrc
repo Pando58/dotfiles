@@ -1,0 +1,19 @@
+Menu; a; @a
+  setxkbmap latam && xdotool type á && setxkbmap us
+
+Menu; e; @e
+  setxkbmap latam && xdotool type é && setxkbmap us
+
+Menu; i; @i
+  setxkbmap latam && xdotool type í && setxkbmap us
+
+Menu; o; @o
+  setxkbmap latam && xdotool type ó && setxkbmap us
+
+Menu; u; @u
+  setxkbmap latam && xdotool type ú && setxkbmap us
+
+Menu; n; @n
+  setxkbmap latam && xdotool type ñ && setxkbmap us
+
+# áéíóúñ

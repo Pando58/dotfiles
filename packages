@@ -1,6 +1,7 @@
 stow
 dex
 lightdm
+lightdm-gtk-greeter
 lxsession
 alacritty
 fish

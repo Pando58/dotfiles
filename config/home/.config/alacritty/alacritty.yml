@@ -1,0 +1,34 @@
+# Colors (Doom One)
+colors:
+  normal:
+    black:   "0x282c34"
+    red:     "0xff6c6b"
+    green:   "0x98be65"
+    yellow:  "0xecbe7b"
+    blue:    "0x51afef"
+    magenta: "0xc678dd"
+    cyan:    "0x46d9ff"
+    white:   "0xbbc2cf"
+
+window:
+  opacity: 0.9
+  dynamic_padding: true
+  padding:
+    x: 6
+    y: 6
+
+font:
+  size: 10
+  normal:
+    family: "JetBrains Mono Nerd Font"
+
+selection:
+  save_to_clipboard: true
+
+cursor:
+  style:
+    shape: Block
+    blinking: On
+
+shell:
+  program: fish

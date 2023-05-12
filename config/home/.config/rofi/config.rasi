@@ -1,0 +1,33 @@
+configuration {
+	modes: "drun,run,filebrowser,window";
+	font: "JetBrainsMono Nerd Font 10";
+	show-icons: true;
+	sidebar-mode: true;
+	fixed-num-lines: true;
+	cycle: true;
+
+	sort: false;
+	// sorting-method: "normal";
+	case-sensitive: false;
+	matching: "normal";
+	tokenize: true;
+
+  disable-history: false;
+	max-history-size: 25;
+	
+  scroll-method: 1;
+	hover-select: false;
+
+	// location: 0;
+	// eh: 1;
+	// terminal: "$TERM";
+	// auto-select: false;
+	// steal-focus: false;
+
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+
+@import "theme.rasi"

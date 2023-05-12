@@ -222,13 +222,13 @@ local function init(s, config)
                                 wibox.widget.systray(),
                             },
                             wibox.widget.textclock(
-                                "<span font='" .. font_text .. "' color='" .. col_text .. "'>%a %b %d, %H:%M:%S</span>",
+                                "<span font='" .. font_text .. "' color='" .. col_text .. "'>%a %b %d, %H:%M:%S </span>",
                                 1 -- Refresh rate - default: 60
                             ),
                         },
                         {
                             widget = wibox.container.margin,
-                            left = 6,
+                            left = 0, -- 6
                             wLauncher,
                         },
                     },

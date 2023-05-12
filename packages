@@ -6,7 +6,11 @@ rofi
 rofimoji
 flameshot
 feh
-neovim
 picom
+neovim
 nm-applet
 ttf-jetbrains-mono-nerd
+inter-font
+arc-gtk-theme
+papirus-icon-theme
+xcursor-vanilla-dmz

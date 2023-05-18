@@ -12,6 +12,9 @@ feh
 picom
 redshift
 neovim
+pavucontrol
+pulsemixer
+playerctl
 nm-applet
 ttf-jetbrains-mono-nerd
 inter-font

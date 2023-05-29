@@ -4,6 +4,7 @@ abbr logout kill -9 -1
 abbr gs git status
 abbr gl git log
 abbr gd git diff
+abbr gds git diff --staged
 abbr ga git add
 
 if status is-interactive

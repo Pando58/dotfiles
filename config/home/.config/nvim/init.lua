@@ -22,30 +22,39 @@ vim.opt.termguicolors = true
 
 -- Plugins
 require("lazy").setup({
-  { -- Icons
+  {
+    -- Icons
     "nvim-tree/nvim-web-devicons",
     opts = {},
   },
 
-  { -- LSP configuration and plugins
-    "neovim/nvim-lspconfig",     dependencies = {
-      { "williamboman/mason.nvim", config = true }, -- External editor tooling manager
+  {
+    -- LSP configuration and plugins
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      {
+        -- External editor tooling manager
+        "williamboman/mason.nvim",
+        config = true
+      },
       "williamboman/mason-lspconfig.nvim",
       {
+        -- Progress UI for LSP
         "j-hui/fidget.nvim",
         opts = {
           window = {
             blend = 0,
           }
         }
-      }, -- Progress UI for LSP
-      "folke/neodev.nvim", -- Additional lua configuration
+      },
+      -- Additional lua configuration
+      "folke/neodev.nvim",
       {
         "MunifTanjim/eslint.nvim",
         dependencies = {
           "jose-elias-alvarez/null-ls.nvim",
         },
-        config = function ()
+        config = function()
           local null_ls = require("null-ls")
           local eslint = require("eslint")
 
@@ -65,11 +74,13 @@ require("lazy").setup({
     },
   },
 
-  { -- Highlight, edit, and navigate code
+  {
+    -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
-      { -- Tag completion
+      {
+        -- Tag completion
         "windwp/nvim-ts-autotag",
         opts = {},
       },
@@ -77,15 +88,14 @@ require("lazy").setup({
     build = ":TSUpdate",
   },
 
-  { -- Autocompletion
+  {
+    -- Autocompletion
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
   },
 
-  -- Emmet abbreviations
-  "mattn/emmet-vim",
-
-  { -- Fuzzy finder
+  {
+    -- Fuzzy finder
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -95,7 +105,7 @@ require("lazy").setup({
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
-    config = function ()
+    config = function()
       return vim.fn.executable "make" == 1
     end,
   },
@@ -108,7 +118,7 @@ require("lazy").setup({
   }, ]]
 
   -- Show pending keybinds
-  { "folke/which-key.nvim", opts = {} },
+  { "folke/which-key.nvim",  opts = {} },
 
   -- Detect indentation
   "tpope/vim-sleuth",
@@ -122,17 +132,19 @@ require("lazy").setup({
   -- Autopairs
   { "windwp/nvim-autopairs", opts = {} },
 
-  { -- Selection movement
+  {
+    -- Selection movement
     "echasnovski/mini.move",
     version = '*',
-    config = function ()
+    config = function()
       require("mini.move").setup()
     end,
   },
 
-  { -- Show indentation lines
+  {
+    -- Show indentation lines
     "lukas-reineke/indent-blankline.nvim",
-    config = function ()
+    config = function()
       require("indent_blankline").setup({
         show_end_of_line = false,
         show_trailing_blankline_indent = false,
@@ -144,7 +156,8 @@ require("lazy").setup({
     end,
   },
 
-  { -- Highlight word under cursor
+  {
+    -- Highlight word under cursor
     "yamatsum/nvim-cursorline",
     opts = {
       cursorline = { enable = false },
@@ -156,15 +169,16 @@ require("lazy").setup({
     },
   },
 
-  { -- Status bar
+  {
+    -- Status bar
     "nvim-lualine/lualine.nvim",
     opts = {
       options = {
         section_separators = { left = "", right = "" },
-        component_separators = { left = '·', right = '·'},
+        component_separators = { left = '·', right = '·' },
       },
       sections = {
-          lualine_c = {{ "filename", path = 1 }},
+        lualine_c = { { "filename", path = 1 } },
       },
     },
   },
@@ -173,7 +187,7 @@ require("lazy").setup({
     "romgrk/barbar.nvim",
     dependencies = 'nvim-tree/nvim-web-devicons',
     init = function() vim.g.barbar_auto_setup = false end,
-    config = function ()
+    config = function()
       require('bufferline').setup({
         animation = false
       })
@@ -182,7 +196,8 @@ require("lazy").setup({
     end,
   },
 
-  { -- File explorer
+  {
+    -- File explorer
     "nvim-tree/nvim-tree.lua",
     opts = {
       git = {
@@ -222,7 +237,7 @@ require("lazy").setup({
   {
     "sainnhe/edge",
     priority = 1000,
-    config = function ()
+    config = function()
       vim.g.edge_style = "default"
       vim.g.edge_transparent_background = 1
     end,
@@ -230,7 +245,7 @@ require("lazy").setup({
   {
     "sainnhe/sonokai",
     priority = 1000,
-    config = function ()
+    config = function()
       vim.g.sonokai_style = "atlantis"
       vim.g.sonokai_transparent_background = 1
     end,
@@ -247,7 +262,7 @@ require("lazy").setup({
     "savq/melange-nvim",
     priority = 1000,
   },
-}) 
+})
 
 -- Options
 vim.opt.list = true
@@ -280,7 +295,7 @@ vim.cmd.colorscheme("sonokai")
 -- Disable automatic comments on new lines
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
-  callback = function ()
+  callback = function()
     vim.opt_local.formatoptions:remove({ "c", "r", "o" })
   end
 })
@@ -288,7 +303,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function ()
+  callback = function()
     vim.highlight.on_yank({
       timeout = 100,
     })
@@ -403,6 +418,8 @@ local servers = {
     },
   },
   tsserver = {},
+  cssls = {},
+  emmet_ls = {},
   rust_analyzer = {},
 }
 
@@ -425,7 +442,7 @@ mason_lspconfig.setup_handlers({
   function(server_name)
     require("lspconfig")[server_name].setup {
       capabilities = capabilities,
-      on_attach = function (_, bufnr)
+      on_attach = function(_, bufnr)
         local nmap = function(keys, func, desc)
           if desc then
             desc = 'LSP: ' .. desc

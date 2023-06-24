@@ -543,6 +543,8 @@ vim.keymap.set({ "n", "x" }, "<leader>D", "\"_d")
 vim.keymap.set("x", "<leader>c", "\"_c")
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
+vim.keymap.set("n", "<C-j>", "i<CR><Esc>")
+
 vim.keymap.set('n', '<leader>t', ':terminal<CR>i', { desc = "Open a new terminal window", silent = true })
 vim.keymap.set('t', '<C-[>', '<C-\\><C-n>', { desc = "Exit terminal mode" })
 

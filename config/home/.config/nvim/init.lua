@@ -110,6 +110,12 @@ require("lazy").setup({
     end,
   },
 
+  {
+    -- Search and replace across files
+    "nvim-pack/nvim-spectre",
+    opts = {},
+  },
+
   --[[ { -- Save sessions
     'rmagatti/auto-session',
     config = function()
@@ -564,6 +570,17 @@ vim.keymap.set('n', '<A->>', "<Cmd>BufferMoveNext<CR>", { silent = true })
 vim.keymap.set('n', '<A-q>', "<Cmd>BufferClose<CR>", { desc = "Close current buffer", silent = true })
 
 vim.keymap.set('n', '<leader>e', ":NvimTreeToggle<CR>", { desc = "Go to next tab", silent = true })
+
+vim.keymap.set('n', '<leader>SO', '<Cmd>lua require("spectre").open()<CR>',
+  { desc = "Open Spectre" })
+vim.keymap.set('n', '<leader>SW', '<Cmd>lua require("spectre").open_visual({select_word=true})<CR>',
+  { desc = "Search current word" })
+vim.keymap.set('v', '<leader>SW', '<Esc><Cmd>lua require("spectre").open_visual()<CR>',
+  { desc = "Search current word" })
+vim.keymap.set('n', '<leader>SF', '<Cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
+  { desc = "Search on current file" })
+vim.keymap.set('v', '<leader>SF', '<Esc><Cmd>lua require("spectre").open_file_search()<CR>',
+  { desc = "Search current word" })
 
 local telescope = require("telescope")
 local telescope_builtin = require('telescope.builtin')

@@ -137,6 +137,10 @@ local function init(s, config)
         btn_floating.children = { awful.titlebar.widget.floatingbutton(c) }
         btn_maximized.children = { awful.titlebar.widget.maximizedbutton(c) }
         btn_close.children = { awful.titlebar.widget.closebutton(c) }
+
+        title:buttons(utils.table.join(
+            awful.button({}, 1, function() awful.titlebar.toggle(c) end)
+        ))
     end
 
     local wFocusedWindowBar = awful.widget.tasklist({

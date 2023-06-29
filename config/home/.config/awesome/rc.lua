@@ -48,7 +48,7 @@ awful.layout.layouts = {
 }
 
 -- Screen setup
-local bar = dofile(main_dir .. "bars/simple_middleempty_diagonal.lua")
+local bar = dofile(main_dir .. "bars/simple.lua")
 
 awful.screen.connect_for_each_screen(function(s)
     -- Create tags

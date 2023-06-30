@@ -133,7 +133,7 @@ local function init(s, config)
         local btn_close = self:get_children_by_id("btn_close")[1]
 
         icon.client = c
-        title.text = c.name
+        title.markup = "<span color='" .. col_text .. "'>" .. c.name .. "</span>"
         btn_floating.children = { awful.titlebar.widget.floatingbutton(c) }
         btn_maximized.children = { awful.titlebar.widget.maximizedbutton(c) }
         btn_close.children = { awful.titlebar.widget.closebutton(c) }

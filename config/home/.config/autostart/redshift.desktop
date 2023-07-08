@@ -1,4 +1,4 @@
 [Desktop Entry]
-Exec=/usr/bin/redshift -P -O 4500 -g 1 -b 1
+Exec=/usr/bin/redshift -P -O 4500 -g 1.1 -b 1
 Name=redshift
 Type=Application

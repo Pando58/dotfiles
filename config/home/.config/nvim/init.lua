@@ -539,6 +539,11 @@ vim.keymap.set("n", "U", "10<C-y>")
 -- vim.keymap.set("n", "n", "nzzzv")
 -- vim.keymap.set("n", "N", "Nzzzv")
 
+vim.keymap.set("i", "<C-h>", "<Left>")
+vim.keymap.set("i", "<C-j>", "<Down>")
+vim.keymap.set("i", "<C-k>", "<Up>")
+vim.keymap.set("i", "<C-l>", "<Right>")
+
 vim.keymap.set({ "n", "x" }, "<leader>D", "\"_d")
 vim.keymap.set("x", "<leader>c", "\"_c")
 vim.keymap.set("x", "<leader>p", "\"_dP")

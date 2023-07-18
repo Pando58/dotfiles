@@ -50,24 +50,20 @@ require("lazy").setup({
       -- Additional lua configuration
       "folke/neodev.nvim",
       {
-        "MunifTanjim/eslint.nvim",
-        dependencies = {
-          "jose-elias-alvarez/null-ls.nvim",
-        },
+        "jose-elias-alvarez/null-ls.nvim",
         config = function()
           local null_ls = require("null-ls")
-          local eslint = require("eslint")
 
-          null_ls.setup()
+          local eslint_config = {
+            filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte" }
+          };
 
-          eslint.setup({
-            bin = 'eslint_d', -- or `eslint_d`
-            code_actions = {
-              enable = true,
-              apply_on_save = {
-                enable = true,
-              },
-            },
+          null_ls.setup({
+            sources = {
+              null_ls.builtins.code_actions.eslint_d.with(eslint_config),
+              null_ls.builtins.diagnostics.eslint_d.with(eslint_config),
+              null_ls.builtins.formatting.eslint_d.with(eslint_config),
+            }
           })
         end,
       }

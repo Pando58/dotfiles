@@ -6,6 +6,7 @@ local theme = require("beautiful")
 
 local main_dir = utils.filesystem.get_configuration_dir()
 
+local widget_volume = dofile(main_dir .. "widgets/volume.lua")
 local widget_picom = dofile(main_dir .. "widgets/picom.lua")
 
 local client = client
@@ -271,12 +272,22 @@ local function init(s, config)
                 {
                     layout = wibox.layout.fixed.horizontal,
                     spacing = 16,
-                    widget_picom,
                     {
                         widget = wibox.container.margin,
                         top = 6,
                         bottom = 6,
                         wibox.widget.systray(),
+                    },
+                    {
+                        widget = wibox.container.margin,
+                        left = 6,
+                        right = 6,
+                        {
+                            layout = wibox.layout.fixed.horizontal,
+                            spacing = 12,
+                            widget_picom,
+                            widget_volume,
+                        },
                     },
                     wibox.widget.textclock(
                         "<span font='" .. font_text .. "' color='" .. col_text .. "'>%a %b %d, %H:%M:%S </span>",

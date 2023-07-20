@@ -4,6 +4,10 @@ local wibox = require("wibox") -- widget framework
 local awful = require("awful") -- window management
 local theme = require("beautiful")
 
+local main_dir = utils.filesystem.get_configuration_dir()
+
+local widget_picom = dofile(main_dir .. "widgets/picom.lua")
+
 local client = client
 
 -- Theming
@@ -267,6 +271,7 @@ local function init(s, config)
                 {
                     layout = wibox.layout.fixed.horizontal,
                     spacing = 16,
+                    widget_picom,
                     {
                         widget = wibox.container.margin,
                         top = 6,

@@ -7,6 +7,7 @@ local theme = require("beautiful")
 local main_dir = utils.filesystem.get_configuration_dir()
 
 local widget_volume = dofile(main_dir .. "widgets/volume.lua")
+local widget_microphone = dofile(main_dir .. "widgets/microphone.lua")
 local widget_picom = dofile(main_dir .. "widgets/picom.lua")
 
 local client = client
@@ -286,6 +287,7 @@ local function init(s, config)
                             layout = wibox.layout.fixed.horizontal,
                             spacing = 12,
                             widget_picom,
+                            widget_microphone,
                             widget_volume,
                         },
                     },

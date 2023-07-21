@@ -1,26 +1,35 @@
 local awful = require("awful")
 
 return {
-    init = function (mod)
+    init = function(mod)
         return {
             awful.key(
-                { }, "XF86AudioRaiseVolume",
-                function () awful.spawn("pulsemixer --change-volume +5") end,
+                {}, "XF86AudioRaiseVolume",
+                function() awful.spawn("pulsemixer --change-volume +5") end,
                 { group = "launcher", description = "Raise system volume" }
             ),
             awful.key(
-                { }, "XF86AudioLowerVolume",
-                function () awful.spawn("pulsemixer --change-volume -5") end,
+                {}, "XF86AudioLowerVolume",
+                function() awful.spawn("pulsemixer --change-volume -5") end,
                 { group = "launcher", description = "Reduce system volume" }
             ),
             awful.key(
-                { }, "XF86AudioMute",
-                function () awful.spawn("pulsemixer --toggle-mute") end,
+                {}, "XF86AudioMute",
+                function() awful.spawn("pulsemixer --toggle-mute") end,
                 { group = "launcher", description = "Reduce system volume" }
             ),
             awful.key(
-                { }, "XF86AudioPlay",
-                function () awful.spawn("playerctl play-pause") end,
+                {}, "XF86AudioPlay",
+                function() awful.spawn("playerctl play-pause") end,
+                { group = "launcher", description = "Reduce system volume" }
+            ),
+            awful.key(
+                { mod }, "m",
+                function()
+                    awful.spawn.with_shell(
+                        "id=$(pulsemixer --list-sources | grep Default | sed 's/.*ID: //;s/\\,.*//'); pulsemixer --id $id --toggle-mute"
+                    )
+                end,
                 { group = "launcher", description = "Reduce system volume" }
             ),
         }

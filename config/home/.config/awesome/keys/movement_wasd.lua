@@ -24,6 +24,17 @@ return {
               function () awful.client.focus.global_bydirection("down") end,
               { group = "client", description = "Focus the window below" }
             ),
+            awful.key(
+              { mod, "Control" }, "a",
+              function () awful.client.focus.byidx(-1) end,
+              { group = "client", description = "Focus previous window" }
+            ),
+            awful.key(
+              { mod, "Control" }, "d",
+              function () awful.client.focus.byidx(1) end,
+              { group = "client", description = "Focus next window" }
+            ),
+
 
             -- Swap windows
             awful.key(

@@ -306,9 +306,11 @@ client.connect_signal("unfocus", function(c) c.border_color = theme.border_norma
 
 -- Enable titlebars for floating windows
 client.connect_signal("property::floating", function(c)
-    if c.floating then
+    if c.floating and (not c.maximized) and (not c.fullscreen) then
         awful.titlebar.show(c)
     else
         awful.titlebar.hide(c)
     end
+
+    c.border_width = theme.border_width
 end)

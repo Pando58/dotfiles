@@ -420,6 +420,7 @@ local servers = {
     },
   },
   tsserver = {},
+  svelte = {},
   cssls = {},
   emmet_ls = {},
   rust_analyzer = {},
@@ -444,7 +445,7 @@ mason_lspconfig.setup_handlers({
   function(server_name)
     require("lspconfig")[server_name].setup {
       capabilities = capabilities,
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
         local nmap = function(keys, func, desc)
           if desc then
             desc = 'LSP: ' .. desc
@@ -472,6 +473,15 @@ mason_lspconfig.setup_handlers({
           vim.lsp.buf.format()
           vim.cmd.write()
         end, { desc = 'Format and save current buffer' })
+
+        if server_name == "svelte" then
+          vim.api.nvim_create_autocmd("BufWritePost", {
+            pattern = { "*.js", "*.ts" },
+            callback = function(ctx)
+              client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+            end,
+          })
+        end
       end,
       settings = servers[server_name],
     }

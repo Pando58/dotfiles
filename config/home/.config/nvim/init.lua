@@ -120,7 +120,7 @@ require("lazy").setup({
   }, ]]
 
   -- Show pending keybinds
-  { "folke/which-key.nvim",  opts = {} },
+  { "folke/which-key.nvim",   opts = {} },
 
   -- Detect indentation
   "tpope/vim-sleuth",
@@ -128,11 +128,14 @@ require("lazy").setup({
   -- Git plugin
   "tpope/vim-fugitive",
 
+  -- Git diff view
+  { "sindrets/diffview.nvim", opts = {} },
+
   -- Comment mappings
-  { "numToStr/Comment.nvim", opts = {} },
+  { "numToStr/Comment.nvim",  opts = {} },
 
   -- Autopairs
-  { "windwp/nvim-autopairs", opts = {} },
+  { "windwp/nvim-autopairs",  opts = {} },
 
   {
     -- Selection movement
@@ -594,6 +597,9 @@ vim.keymap.set('n', '<leader>SF', '<Cmd>lua require("spectre").open_file_search(
   { desc = "Search on current file" })
 vim.keymap.set('v', '<leader>SF', '<Esc><Cmd>lua require("spectre").open_file_search()<CR>',
   { desc = "Search current word" })
+
+vim.keymap.set("n", "<leader>vo", ":DiffviewOpen<CR>", { desc = "Show diff view" })
+vim.keymap.set("n", "<leader>vc", ":DiffviewClose<CR>", { desc = "Close diff view" })
 
 local telescope = require("telescope")
 local telescope_builtin = require('telescope.builtin')

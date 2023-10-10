@@ -1,4 +1,4 @@
 [Desktop Entry]
-Exec=/usr/bin/nm-applet
+Exec=nm-applet
 Name=nm-applet
 Type=Application

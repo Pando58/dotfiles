@@ -7,10 +7,6 @@
   hostname,
   ...
 }: {
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
   system.stateVersion = stateVersion;
   nixpkgs.hostPlatform = lib.mkDefault system;
 
@@ -39,4 +35,6 @@
   # Networking
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
+
+  networking.useDHCP = lib.mkDefault true;
 }

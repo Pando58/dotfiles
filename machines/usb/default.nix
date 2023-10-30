@@ -1,12 +1,10 @@
 inputs @ {
-  config,
   pkgs,
-  pkgs-unstable,
   stateVersion,
-  hostname,
   ...
 }: let
   username = "pando";
+  password = "135642";
 in {
   imports = [
     ./configuration.nix
@@ -16,11 +14,7 @@ in {
   # Programs
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    virt-manager
-    wineWowPackages.stable
-    winetricks
-  ];
+  environment.systemPackages = [];
 
   programs.dconf.enable = true; # Needed for GTK and virtualization
   services.gvfs.enable = true; # Mounting and trash support for file managers
@@ -33,9 +27,6 @@ in {
     };
   };
 
-  # Virtualization
-  virtualisation.libvirtd.enable = true;
-
   # X Server
   services.xserver = {
     enable = true;
@@ -43,16 +34,14 @@ in {
     displayManager = {
       lightdm.enable = true;
 
-      autoLogin = {
-        enable = true;
-        user = username;
-      };
+      # autoLogin = {
+      #   enable = true;
+      #   user = username;
+      # };
 
       sessionCommands = ''
         setxkbmap -option compose:ralt -option caps:escape_shifted_capslock &
-        ~/.fehbg &
         redshift -P -O 4500 -g 1.1 -b 1 &
-        picom &
         dex -a -s ~/.config/autostart &
       '';
     };
@@ -64,11 +53,6 @@ in {
 
   # Audio
   security.rtkit.enable = true;
-
-  musnix = {
-    enable = true;
-    # kernel.realtime = true;
-  };
 
   services.pipewire = {
     enable = true;
@@ -93,20 +77,19 @@ in {
     };
   };
 
-  # User
+  # Users
+  users.users.root.password = password;
+
   users.users.${username} = {
     isNormalUser = true;
     description = username;
+    password = password;
     extraGroups = [
       "networkmanager"
       "wheel"
-      "libvirtd"
-      "audio"
     ];
     packages = [];
   };
-
-  # services.getty.autologinUser = username;
 
   # Home Manager
   home-manager.users.${username} = {
@@ -115,14 +98,6 @@ in {
     home = {
       inherit username stateVersion;
       homeDirectory = "/home/${username}";
-    };
-
-    # Virt Manager config
-    dconf.settings = {
-      "org/virt-manager/virt-manager/connections" = {
-        autoconnect = ["qemu:///system"];
-        uris = ["qemu:///system"];
-      };
     };
 
     # Programs and config files

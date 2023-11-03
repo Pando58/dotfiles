@@ -27,7 +27,7 @@
       config.allowUnfree = true;
     };
   in {
-    nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.main = nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = { inherit pkgs-unstable hostname system stateVersion; };
       modules = [

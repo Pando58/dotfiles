@@ -79,9 +79,9 @@ in {
 
   # Fonts
   fonts = {
-    enableDefaultFonts = true;
+    enableDefaultPackages = true;
 
-    fonts = with pkgs; [
+    packages = with pkgs; [
       inter
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];

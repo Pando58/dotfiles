@@ -10,8 +10,8 @@ return {
             ),
             awful.key(
                 { mod }, "t",
-                function () awful.spawn("alacritty") end,
-                { group = "launcher", description = "Launch terminal (Alacritty)" }
+                function () awful.spawn("wezterm") end,
+                { group = "launcher", description = "Launch terminal (WezTerm)" }
             ),
             awful.key(
                 { mod }, "b",

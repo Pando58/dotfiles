@@ -7,6 +7,10 @@
   hostname,
   ...
 }: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
   system.stateVersion = stateVersion;
   nixpkgs.hostPlatform = lib.mkDefault system;
 

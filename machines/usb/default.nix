@@ -1,15 +1,18 @@
 inputs @ {
   pkgs,
+  pkgs-unstable,
   stateVersion,
   ...
 }: let
   username = "pando";
-  password = "135642";
 in {
   imports = [
     ./configuration.nix
     (import ./local.nix (inputs // { inherit username; }))
   ];
+
+  # Faster building
+  isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 
   # Programs
   nixpkgs.config.allowUnfree = true;
@@ -64,9 +67,9 @@ in {
 
   # Fonts
   fonts = {
-    enableDefaultFonts = true;
+    enableDefaultPackages = true;
 
-    fonts = with pkgs; [
+    packages = with pkgs; [
       inter
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
@@ -78,12 +81,9 @@ in {
   };
 
   # Users
-  users.users.root.password = password;
-
   users.users.${username} = {
     isNormalUser = true;
     description = username;
-    password = password;
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -101,16 +101,10 @@ in {
     };
 
     # Programs and config files
-    home.packages = with pkgs; [
-      picom
-      alacritty
-      fish
+    home.packages = (with pkgs; [
       xclip
-      rofi
-      rofimoji
       dex
       feh
-      dtrx
       xdragon
       redshift
       playerctl
@@ -119,12 +113,21 @@ in {
       pcmanfm
       networkmanagerapplet
       neovim
-    ];
+    ]) ++ (with pkgs-unstable; [
+      picom
+      wezterm
+      fish
+      rofi
+      rofimoji
+      dtrx
+      ventoy
+    ]);
 
     xdg.configFile = {
       awesome = { recursive = true; source = ../../config/home/.config/awesome; };
       picom = { recursive = true; source = ../../config/home/.config/picom; };
       alacritty = { recursive = true; source = ../../config/home/.config/alacritty; };
+      wezterm = { recursive = true; source = ../../config/home/.config/wezterm; };
       fish = { recursive = true; source = ../../config/home/.config/fish; };
       rofi = { recursive = true; source = ../../config/home/.config/rofi; };
       rofimoji = { recursive = true; source = ../../config/home/.config/rofimoji; };

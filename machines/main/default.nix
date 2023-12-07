@@ -144,6 +144,7 @@ in {
       rofi
       rofimoji
       dtrx
+      ventoy
     ]);
 
     xdg.configFile = {

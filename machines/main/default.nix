@@ -140,7 +140,6 @@ in {
     ]) ++ (with pkgs-unstable; [
       picom
       wezterm
-      fish
       rofi
       rofimoji
       dtrx
@@ -158,6 +157,11 @@ in {
       "rofimoji.rc" = { source = ../../config/home/.config/rofimoji.rc; };
       "autostart/nm-applet.desktop" = { source = ../../config/home/.config/autostart/nm-applet.desktop; };
       # nvim = { recursive = true; source = ../../config/home/.config/nvim; };
+    };
+
+    programs.fish = {
+      enable = true;
+      package = pkgs-unstable.fish;
     };
 
     # Neovim

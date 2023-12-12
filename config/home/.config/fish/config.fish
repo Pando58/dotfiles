@@ -6,6 +6,7 @@ if status is-interactive
   abbr logout kill -9 -1
   abbr gs git status
   abbr gl git log
+  abbr gl1 git log -n1
   abbr gd git diff
   abbr gds git diff --staged
   abbr ga git add

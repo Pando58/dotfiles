@@ -6,7 +6,8 @@ function fish_prompt
     set -g __fish_git_prompt_showupstream informative
     set -l vcs (fish_vcs_prompt " ")
 
-    set -l c_cwd brgreen
+    set -l c_main brgreen
+    set -l c_main2 green
     set -l c_dark black
     set -l c_dark2 brblack
     set -l c_light2 brwhite
@@ -23,14 +24,28 @@ function fish_prompt
     else
         echo -ns (set_color $c_light -b $c_dark) " " $reset
     end
-    echo -ns (set_color $c_dark -b $c_cwd)  $reset
-    echo -ns (set_color $c_dark -b $c_cwd --bold) " $(prompt_pwd) " $reset
+    echo -ns (set_color $c_dark -b $c_main)  $reset
+    echo -ns (set_color $c_dark -b $c_main --bold) " $(prompt_pwd) " $reset
+    if string length --quiet $IN_NIX_SHELL
+        echo -ns (set_color $c_main -b $c_dark)  $reset
+        echo -ns (set_color $c_dark -b $c_main2)  $reset
+        echo -ns (set_color $c_dark -b $c_main2 --bold) " 󱄅 " $reset
+    end
     if string length --quiet $vcs
-        echo -ns (set_color $c_cwd -b $c_dark)  $reset
+        if string length --quiet $IN_NIX_SHELL
+            echo -ns (set_color $c_main2 -b $c_dark)  $reset
+        else
+            echo -ns (set_color $c_main -b $c_dark)  $reset
+        end
         echo -ns (set_color $c_light -b $c_dark) $vcs $reset
         echo -ns (set_color $c_dark)  $reset
     else
-        echo -ns (set_color $c_cwd)  $reset
+        if string length --quiet $IN_NIX_SHELL
+            echo -ns (set_color $c_main2)  $reset
+        else
+            echo -ns (set_color $c_main)  $reset
+        end
+
     end
 
     echo

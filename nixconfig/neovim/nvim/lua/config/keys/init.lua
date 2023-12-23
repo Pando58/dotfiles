@@ -1,0 +1,6 @@
+require("config.keys.misc").keys()
+require("config.keys.telescope").keys()
+-- require("config.keys.neoscroll").keys()
+require("config.keys.neotree").keys()
+require("config.keys.gitsigns").keys()
+require("config.keys.diffview").keys()

@@ -100,7 +100,7 @@ in {
       homeDirectory = "/home/${username}";
     };
 
-    # Programs and config files
+    # Programs
     home.packages = (with pkgs; [
       xclip
       dex
@@ -112,7 +112,6 @@ in {
       pavucontrol
       pcmanfm
       networkmanagerapplet
-      neovim
     ]) ++ (with pkgs-unstable; [
       picom
       wezterm
@@ -122,6 +121,7 @@ in {
       ventoy
     ]);
 
+    # Dotfiles
     xdg.configFile = {
       awesome = { recursive = true; source = ../../config/home/.config/awesome; };
       picom = { recursive = true; source = ../../config/home/.config/picom; };
@@ -132,19 +132,18 @@ in {
       rofimoji = { recursive = true; source = ../../config/home/.config/rofimoji; };
       "rofimoji.rc" = { source = ../../config/home/.config/rofimoji.rc; };
       "autostart/nm-applet.desktop" = { source = ../../config/home/.config/autostart/nm-applet.desktop; };
-      # nvim = { recursive = true; source = ../../config/home/.config/nvim; };
     };
 
+    # Fish
     programs.fish = {
       enable = true;
       package = pkgs-unstable.fish;
     };
 
     # Neovim
-    # programs.neovim = {
-    #   enable = true;
-    #   plugins = with pkgs.vimPlugins; [];
-    # };
+    imports = [
+      (import ../../nixconfig/neovim (inputs // { pkgs = pkgs-unstable; }))
+    ];
 
     # Flameshot
     services.flameshot = {

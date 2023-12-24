@@ -60,5 +60,21 @@
         machines/usb
       ];
     };
+    nixosConfigurations.asus-f455l = nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs = { inherit pkgs-unstable hostname system; stateVersion = "23.11"; };
+      modules = [
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = { inherit pkgs-unstable; };
+          };
+        }
+        musnix.nixosModules.musnix
+        machines/asus-f455l
+      ];
+    };
   };
 }

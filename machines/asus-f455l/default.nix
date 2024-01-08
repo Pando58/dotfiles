@@ -10,7 +10,7 @@ inputs @ {
 in {
   imports = [
     ./configuration.nix
-    (import ./local.nix (inputs // { inherit username; }))
+    (import ../../local/machines/asus-f455l (inputs // { inherit username; }))
   ];
 
   # Programs

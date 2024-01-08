@@ -8,7 +8,7 @@ inputs @ {
 in {
   imports = [
     ./configuration.nix
-    (import ./local.nix (inputs // { inherit username; }))
+    (import ../../local/machines/usb (inputs // { inherit username; }))
   ];
 
   # Faster building

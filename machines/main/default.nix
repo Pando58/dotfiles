@@ -11,6 +11,7 @@ in {
   imports = [
     ./configuration.nix
     (import ../../local/machines/main (inputs // { inherit username; }))
+    (import ../../nixconfig/gnome (inputs // { inherit username; }))
   ];
 
   # Programs
@@ -34,32 +35,6 @@ in {
   };
 
   virtualisation.libvirtd.enable = true;
-
-  # X Server
-  services.xserver = {
-    enable = true;
-
-    displayManager = {
-      lightdm.enable = true;
-
-      autoLogin = {
-        enable = true;
-        user = username;
-      };
-
-      sessionCommands = ''
-        setxkbmap -option compose:ralt -option caps:escape_shifted_capslock &
-        ~/.fehbg &
-        redshift -P -O 4500 -g 1.1 -b 1 &
-        picom &
-        dex -a -s ~/.config/autostart &
-      '';
-    };
-
-    windowManager = {
-      awesome.enable = true;
-    };
-  };
 
   # Audio
   security.rtkit.enable = true;
@@ -109,6 +84,11 @@ in {
 
   # Home Manager
   home-manager.users.${username} = {
+    imports = [
+      (import ../../nixconfig/neovim (inputs // { pkgs = pkgs-unstable; }))
+      ../../nixconfig/gnome/home.nix
+    ];
+
     programs.home-manager.enable = true;
 
     home = {
@@ -127,35 +107,31 @@ in {
     # Programs
     home.packages = (with pkgs; [
       xclip
-      dex
-      feh
+      # dex
+      # feh
       xdragon
-      redshift
+      # redshift
       playerctl
       pulsemixer
       pavucontrol
-      pcmanfm
-      networkmanagerapplet
     ]) ++ (with pkgs-unstable; [
-      picom
       wezterm
-      rofi
-      rofimoji
+      brave
       dtrx
       ventoy
     ]);
 
     # Dotfiles
     xdg.configFile = {
-      awesome = { recursive = true; source = ../../config/home/.config/awesome; };
-      picom = { recursive = true; source = ../../config/home/.config/picom; };
-      alacritty = { recursive = true; source = ../../config/home/.config/alacritty; };
       wezterm = { recursive = true; source = ../../config/home/.config/wezterm; };
       fish = { recursive = true; source = ../../config/home/.config/fish; };
-      rofi = { recursive = true; source = ../../config/home/.config/rofi; };
-      rofimoji = { recursive = true; source = ../../config/home/.config/rofimoji; };
-      "rofimoji.rc" = { source = ../../config/home/.config/rofimoji.rc; };
-      "autostart/nm-applet.desktop" = { source = ../../config/home/.config/autostart/nm-applet.desktop; };
+      # awesome = { recursive = true; source = ../../config/home/.config/awesome; };
+      # picom = { recursive = true; source = ../../config/home/.config/picom; };
+      # alacritty = { recursive = true; source = ../../config/home/.config/alacritty; };
+      # rofi = { recursive = true; source = ../../config/home/.config/rofi; };
+      # rofimoji = { recursive = true; source = ../../config/home/.config/rofimoji; };
+      # "rofimoji.rc" = { source = ../../config/home/.config/rofimoji.rc; };
+      # "autostart/nm-applet.desktop" = { source = ../../config/home/.config/autostart/nm-applet.desktop; };
     };
 
     # Fish
@@ -164,23 +140,18 @@ in {
       package = pkgs-unstable.fish;
     };
 
-    # Neovim
-    imports = [
-      (import ../../nixconfig/neovim (inputs // { pkgs = pkgs-unstable; }))
-    ];
-
     # Flameshot
-    services.flameshot = {
-      enable = true;
-      settings.General = {
-        disabledTrayIcon = true;
-        showStartupLaunchMessage = false;
-        filenamePattern = "%F_%H-%M-%S";
-        showMagnifier = true;
-        squareMagnifier = true;
-        contrastOpacity = 75;
-      };
-    };
+    # services.flameshot = {
+    #   enable = true;
+    #   settings.General = {
+    #     disabledTrayIcon = true;
+    #     showStartupLaunchMessage = false;
+    #     filenamePattern = "%F_%H-%M-%S";
+    #     showMagnifier = true;
+    #     squareMagnifier = true;
+    #     contrastOpacity = 75;
+    #   };
+    # };
 
     # Theme
     gtk = {
@@ -195,7 +166,14 @@ in {
         name = "Papirus-Dark";
         package = pkgs.papirus-icon-theme;
       };
+
+      cursorTheme = {
+        name = "Vanilla-DMZ";
+        package = pkgs.vanilla-dmz;
+      };
     };
+
+    home.sessionVariables.GTK_THEME = "Arc-Dark";
 
     home.pointerCursor = {
       name = "Vanilla-DMZ";

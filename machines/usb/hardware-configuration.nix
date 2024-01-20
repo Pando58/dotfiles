@@ -10,6 +10,24 @@
 
   boot.supportedFilesystems = [ "ntfs" ];
 
+  fileSystems = {
+    "/nix/.rw-store" = lib.mkForce {
+      device = "/dev/disk/by-label/K128_nixstore";
+      fsType = "ext4";
+      neededForBoot = true;
+    };
+    # "/mnt/usb" = {
+    #   device = "/dev/disk/by-label/K128";
+    #   fsType = "ext4";
+    #   neededForBoot = true;
+    # };
+    "/mnt/usb_exfat" = {
+      device = "/dev/disk/by-label/K128_exfat";
+      fsType = "exfat";
+      neededForBoot = false;
+    };
+  };
+
   swapDevices = [{ device = "/dev/disk/by-label/K128_swap"; }];
 
   # Graphics

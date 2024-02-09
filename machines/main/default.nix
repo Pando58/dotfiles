@@ -141,6 +141,7 @@ in {
       wezterm
       rofi
       rofimoji
+      brave
       dtrx
       ventoy
     ]);

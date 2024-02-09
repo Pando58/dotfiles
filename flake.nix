@@ -21,7 +21,6 @@
     ...
   }: let
     system = "x86_64-linux";
-    stateVersion = "23.05";
     hostname = "nixos";
     pkgs-unstable = import nixpkgs-unstable {
       inherit system;
@@ -30,7 +29,7 @@
   in {
     nixosConfigurations.main = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit pkgs-unstable hostname system stateVersion; };
+      specialArgs = { inherit pkgs-unstable hostname system; stateVersion = "23.11"; };
       modules = [
         home-manager.nixosModules.home-manager
         {
@@ -47,7 +46,7 @@
     packages.x86_64-linux.iso = nixos-generators.nixosGenerate {
       inherit system;
       format = "iso";
-      specialArgs = { inherit pkgs-unstable hostname system stateVersion; };
+      specialArgs = { inherit pkgs-unstable hostname system; stateVersion = "23.11"; };
       modules = [
         home-manager.nixosModules.home-manager
         {

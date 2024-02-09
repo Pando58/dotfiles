@@ -21,16 +21,16 @@
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/dd5e7cc8-49aa-458b-bbd9-6fa24c98cfef";
+      device = "/dev/disk/by-uuid/db67061b-d46c-454c-9617-69dca1155076";
       fsType = "ext4";
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/2B2E-9504";
+      device = "/dev/disk/by-uuid/0200-E176";
       fsType = "vfat";
     };
   };
 
-  swapDevices = [{ device = "/dev/disk/by-uuid/a6da89f0-8a3e-4fe9-b300-f1ba11d9fb88"; }];
+  swapDevices = [{ device = "/dev/disk/by-uuid/29844642-589a-4ed9-a611-7b9c910c88f9"; }];
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 

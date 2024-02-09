@@ -18,4 +18,6 @@ if status is-interactive
   abbr gca git commit --amend
   abbr gcan git commit --amend --no-edit
   abbr gcam --set-cursor 'git commit --amend -m "%"'
+
+  abbr lg lazygit
 end

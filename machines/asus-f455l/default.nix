@@ -148,6 +148,7 @@ in {
       wezterm
       rofi
       rofimoji
+      lazygit
       brave
       dtrx
       ventoy

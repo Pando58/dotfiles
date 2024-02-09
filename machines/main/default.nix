@@ -35,6 +35,12 @@ in {
 
   virtualisation.libvirtd.enable = true;
 
+  # PlatformIO
+  services.udev.packages = with pkgs; [
+    platformio-core
+    openocd
+  ];
+
   # X Server
   services.xserver = {
     enable = true;
@@ -101,6 +107,7 @@ in {
       "wheel"
       "libvirtd"
       "audio"
+      "dialout"
     ];
     packages = [];
   };

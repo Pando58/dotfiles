@@ -44,6 +44,8 @@ local newtab_fg_hover = "939cbd"
 local config = wezterm.config_builder and wezterm.config_builder() or {}
 
 merge_tables(config, {
+  term = "wezterm",
+
   window_background_opacity = window_opacity,
   window_padding = {
     left = window_padding,

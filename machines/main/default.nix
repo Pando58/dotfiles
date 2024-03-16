@@ -110,6 +110,7 @@ in {
       "dialout"
     ];
     packages = [];
+    shell = pkgs-unstable.fish;
   };
 
   # services.getty.autologinUser = username;
@@ -131,7 +132,7 @@ in {
       };
     };
 
-    # Programs
+    # Packages
     home.packages = (with pkgs; [
       xclip
       dex
@@ -167,16 +168,17 @@ in {
       "autostart/nm-applet.desktop" = { source = ../../config/home/.config/autostart/nm-applet.desktop; };
     };
 
+    # Program config
+    imports = [
+      (import ../../nixconfig/neovim (inputs // { pkgs = pkgs-unstable; }))
+      (import ../../nixconfig/tmux (inputs // { pkgs = pkgs-unstable; }))
+    ];
+
     # Fish
     programs.fish = {
       enable = true;
       package = pkgs-unstable.fish;
     };
-
-    # Neovim
-    imports = [
-      (import ../../nixconfig/neovim (inputs // { pkgs = pkgs-unstable; }))
-    ];
 
     # Flameshot
     services.flameshot = {

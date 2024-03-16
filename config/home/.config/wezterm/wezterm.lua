@@ -12,11 +12,13 @@ local function basename(s)
 end
 
 local process_icons = {
-  ["fish"] = wezterm.nerdfonts.cod_terminal,         -- 
+  ["fish"] = wezterm.nerdfonts.md_fish,              -- 󰈺
   ["bash"] = wezterm.nerdfonts.cod_terminal_bash,    -- 
+  ["tmux"] = wezterm.nerdfonts.cod_terminal_tmux,    -- 
   ["nvim"] = wezterm.nerdfonts.custom_vim,           -- 
   ["vim"] = wezterm.nerdfonts.dev_vim,               -- 
   ["git"] = wezterm.nerdfonts.md_git,                -- 󰊢
+  ["lazygit"] = wezterm.nerdfonts.md_git,            -- 󰊢
   [".man-wrapped"] = wezterm.nerdfonts.fa_book,      -- 
   ["nix"] = wezterm.nerdfonts.linux_nixos,           -- 
   ["node"] = wezterm.nerdfonts.md_nodejs,            -- 󰎙
@@ -31,7 +33,7 @@ local window_padding = 6
 local window_opacity = 0.9
 local window_bg_rgb = "28, 28, 30"
 local window_bg = "rgb(" .. window_bg_rgb .. ")"
-local window_bg_alpha = "rgba(" .. window_bg_rgb .. ", " .. window_opacity .. ")"
+local window_bg_alpha = "rgba(" .. window_bg_rgb .. ", 0)"
 local tab_bg = "767d99"
 local tab_fg = window_bg
 local tab_bg_focus = "a5e179"
@@ -76,11 +78,12 @@ merge_tables(config, {
   end)(),
 
   window_frame = {
-    border_top_height = "0.375cell",
-    border_top_color = window_bg_alpha,
+    border_bottom_height = "0.375cell",
+    border_bottom_color = window_bg_alpha,
   },
 
   use_fancy_tab_bar = false,
+  tab_bar_at_bottom = true,
   tab_max_width = 32,
   tab_bar_style = {
     new_tab = wezterm.format({
@@ -138,9 +141,8 @@ merge_tables(config, {
     { mods = "CTRL|ALT|SHIFT", key = "Tab", action = act.MoveTabRelative(-1) },
   },
 
-  default_prog = { "fish" },
+  default_prog = { "tmux" },
   set_environment_variables = {
-    SHELL = "fish",
     EDITOR = "nvim",
   },
 

@@ -26,10 +26,9 @@
     tree-sitter-bash
   ];
 in {
-
   programs.neovim = {
     enable = true;
-
+    package = pkgs.neovim-unwrapped;
     extraPackages = with pkgs; [
       gcc
       ripgrep

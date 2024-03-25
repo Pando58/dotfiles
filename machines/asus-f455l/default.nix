@@ -140,6 +140,7 @@ in {
       xdragon
       redshift
       playerctl
+      alsa-utils
       pulsemixer
       pavucontrol
       pcmanfm

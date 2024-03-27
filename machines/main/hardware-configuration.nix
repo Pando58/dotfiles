@@ -50,18 +50,14 @@
 
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    open = false;
+
+    nvidiaSettings = true;
+
     modesetting.enable = true;
 
-    # experimental, can cause sleep/suspend to fail
     powerManagement.enable = false;
     powerManagement.finegrained = false;
-
-    # use the nvidia open source kernel module (not to be confused with the independent third-party "nouveau" open source driver).
-    # https://github.com/NVIDIA/open-gpu-kernel-modules
-    # do not disable this unless your GPU is unsupported or if you have a good reason to.
-    open = true;
-
-    # Enable the nvidia-settings menu,
-    nvidiaSettings = true;
   };
 }

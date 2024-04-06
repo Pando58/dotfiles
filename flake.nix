@@ -10,6 +10,9 @@
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
     musnix.url = "github:musnix/musnix";
     musnix.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    neovim-config.url = "path:./nixconfig/neovim";
+    neovim-config.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs = inputs @ {
@@ -18,6 +21,7 @@
     home-manager,
     nixos-generators,
     musnix,
+    neovim-config,
     ...
   }: let
     system = "x86_64-linux";
@@ -29,7 +33,7 @@
   in {
     nixosConfigurations.main = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit pkgs-unstable hostname system; stateVersion = "23.11"; };
+      specialArgs = { inherit pkgs-unstable hostname system neovim-config; stateVersion = "23.11"; };
       modules = [
         home-manager.nixosModules.home-manager
         {
@@ -46,7 +50,7 @@
     packages.x86_64-linux.iso = nixos-generators.nixosGenerate {
       inherit system;
       format = "iso";
-      specialArgs = { inherit pkgs-unstable hostname system; stateVersion = "23.11"; };
+      specialArgs = { inherit pkgs-unstable hostname system neovim-config; stateVersion = "23.11"; };
       modules = [
         home-manager.nixosModules.home-manager
         {
@@ -61,7 +65,7 @@
     };
     nixosConfigurations.asus-f455l = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit pkgs-unstable hostname system; stateVersion = "23.11"; };
+      specialArgs = { inherit pkgs-unstable hostname system neovim-config; stateVersion = "23.11"; };
       modules = [
         home-manager.nixosModules.home-manager
         {

@@ -1,9 +1,9 @@
 {
-  config,
   pkgs,
   ...
 }: let
   treesitter_packages = p: with p; [
+    tree-sitter-norg
     tree-sitter-lua
     tree-sitter-javascript
     tree-sitter-typescript
@@ -45,6 +45,13 @@ in {
     ];
 
     plugins = with pkgs.vimPlugins; [
+      neorg
+      lua-utils
+      nvim-nio
+      pathlib
+      nui-nvim
+      plenary-nvim
+
       nvim-lspconfig
       neodev-nvim
       fidget-nvim

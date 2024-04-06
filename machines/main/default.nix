@@ -4,6 +4,7 @@ inputs @ {
   pkgs-unstable,
   stateVersion,
   hostname,
+  neovim-config,
   ...
 }: let
   username = "pando";
@@ -171,7 +172,7 @@ in {
 
     # Program config
     imports = [
-      (import ../../nixconfig/neovim (inputs // { pkgs = pkgs-unstable; }))
+      neovim-config.config
       (import ../../nixconfig/tmux (inputs // { pkgs = pkgs-unstable; }))
     ];
 

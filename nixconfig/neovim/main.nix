@@ -83,6 +83,7 @@ in {
       nvim-ts-autotag
       comment-nvim
       vim-sleuth
+      true-zen-nvim
 
       vim-fugitive
       gitsigns-nvim

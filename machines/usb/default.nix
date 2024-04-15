@@ -3,6 +3,7 @@ inputs @ {
   pkgs-unstable,
   stateVersion,
   neovim-config,
+  latex-config,
   ...
 }: let
   username = "pando";
@@ -115,6 +116,8 @@ in {
       pavucontrol
       pcmanfm
       networkmanagerapplet
+      texliveFull
+      zathura
     ]) ++ (with pkgs-unstable; [
       picom
       wezterm
@@ -137,12 +140,14 @@ in {
       rofimoji = { recursive = true; source = ../../config/home/.config/rofimoji; };
       "rofimoji.rc" = { source = ../../config/home/.config/rofimoji.rc; };
       "autostart/nm-applet.desktop" = { source = ../../config/home/.config/autostart/nm-applet.desktop; };
+      zathura = { recursive = true; source = ../../config/home/.config/zathura; };
     };
 
     # Program config
     imports = [
       neovim-config.config
       (import ../../nixconfig/tmux (inputs // { pkgs = pkgs-unstable; }))
+      latex-config.config
     ];
 
     # Fish

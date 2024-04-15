@@ -5,6 +5,7 @@ inputs @ {
   stateVersion,
   hostname,
   neovim-config,
+  latex-config,
   ...
 }: let
   username = "pando";
@@ -174,6 +175,7 @@ in {
     imports = [
       neovim-config.config
       (import ../../nixconfig/tmux (inputs // { pkgs = pkgs-unstable; }))
+      latex-config.config
     ];
 
     # Fish

@@ -89,6 +89,8 @@ in {
       gitsigns-nvim
       diffview-nvim
 
+      vimtex
+
       sonokai
     ];
   };

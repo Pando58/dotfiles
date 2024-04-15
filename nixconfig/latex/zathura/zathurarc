@@ -1,0 +1,4 @@
+set page-padding 20
+set highlight-transparency 0
+set recolor-lightcolor "#2A2A2A"
+set recolor-darkcolor "#E0E0E0"

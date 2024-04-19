@@ -17,15 +17,15 @@ return {
 		map("<leader>sc", telescope_builtin.commands, { desc = "[s]earch [c]ommands" })
 		map("<leader>sr", telescope_builtin.registers, { desc = "[s]earch [r]egisters" })
 		map("<leader>sw", telescope_builtin.grep_string, { desc = "[s]earch current [w]ord" })
-		map("<leader>sG", telescope_builtin.live_grep, { desc = "[s]earch with [G]rep" })
+		map("<leader>sg", telescope_builtin.live_grep, { desc = "[s]earch with [g]rep" })
 		map("<leader>sd", telescope_builtin.diagnostics, { desc = "[s]earch [d]iagnostics" })
 		map("<leader>slsb", telescope_builtin.lsp_document_symbols, { desc = "[s]earch [l]sp [s]ymbols in the current [b]uffer" })
 		map("<leader>slsw", telescope_builtin.lsp_workspace_symbols, { desc = "[s]earch [l]sp [s]ymbols in the current [w]orkspace" })
 		map("<leader>st", telescope_builtin.treesitter, { desc = "[s]earch stuff from treesitter" })
-		map("<leader>sgs", telescope_builtin.git_status, { desc = "[s]earch [g]it [s]tatus" })
-		map("<leader>sgS", telescope_builtin.git_stash, { desc = "[s]earch [g]it [s]tash" })
-		map("<leader>sgc", telescope_builtin.git_commits, { desc = "[s]earch [g]it [c]ommits" })
-		map("<leader>sgb", telescope_builtin.git_branches, { desc = "[s]earch [g]it [b]ranches" })
+		map("<leader>sGs", telescope_builtin.git_status, { desc = "[s]earch [G]it [s]tatus" })
+		map("<leader>sGS", telescope_builtin.git_stash, { desc = "[s]earch [G]it [s]tash" })
+		map("<leader>sGc", telescope_builtin.git_commits, { desc = "[s]earch [G]it [c]ommits" })
+		map("<leader>sGb", telescope_builtin.git_branches, { desc = "[s]earch [G]it [b]ranches" })
 
 		map("<leader>su", telescope.extensions.undo.undo, { desc = "[s]earch [u]ndo tree" })
 
@@ -39,6 +39,8 @@ return {
 				["<C-l>"] = "preview_scrolling_right",
 				["<C-f>"] = false, -- Disable preview_scrolling_left
 				["<C-k>"] = false, -- Disable preview_scrolling_right
+				["<Esc>"] = "close",
+				["<C-c>"] = false,
 			},
 			n = {
 				["<C-c>"] = "close",

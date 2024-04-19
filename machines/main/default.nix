@@ -156,6 +156,7 @@ in {
       brave
       dtrx
       ventoy
+      kicad
     ]);
 
     # Dotfiles

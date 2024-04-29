@@ -16,11 +16,11 @@
       fsType = "ext4";
       neededForBoot = true;
     };
-    # "/mnt/usb" = {
-    #   device = "/dev/disk/by-label/K128";
-    #   fsType = "ext4";
-    #   neededForBoot = true;
-    # };
+    "/mnt/usb" = {
+      device = "/dev/disk/by-label/K128_files";
+      fsType = "ext4";
+      neededForBoot = false;
+    };
     "/mnt/usb_exfat" = {
       device = "/dev/disk/by-label/K128_exfat";
       fsType = "exfat";

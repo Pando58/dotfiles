@@ -15,6 +15,8 @@ return function (params)
 				"rust",
 				"toml",
 				"nix",
+				"gdscript",
+				"godot_resource",
 				"dockerfile",
 				"c",
 				"cpp",

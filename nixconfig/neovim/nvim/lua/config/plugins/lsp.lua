@@ -35,6 +35,7 @@ local servers = {
 	tailwindcss = {},
 	emmet_ls = {},
 	rust_analyzer = {},
+	gdscript = {},
 }
 
 local on_attach = function (_client, buffer_number)

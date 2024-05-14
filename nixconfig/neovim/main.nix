@@ -17,6 +17,8 @@
     tree-sitter-rust
     tree-sitter-toml
     tree-sitter-nix
+    tree-sitter-gdscript
+    tree-sitter-godot-resource
     tree-sitter-dockerfile
     tree-sitter-c
     tree-sitter-cpp

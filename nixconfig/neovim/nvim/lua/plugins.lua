@@ -60,6 +60,13 @@ return {
 			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 		},
 	},
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		dependencies = {
+			"nvim-tree/nvim-web-devicons"
+		},
+	},
 	"folke/which-key.nvim", -- Keys popup
 	"lukas-reineke/indent-blankline.nvim", -- Show indentation lines
 

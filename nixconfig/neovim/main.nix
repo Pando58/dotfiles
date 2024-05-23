@@ -70,6 +70,7 @@ in {
       lualine-nvim
       barbar-nvim
       neo-tree-nvim
+      oil-nvim
       nvim-web-devicons
       which-key-nvim
       indent-blankline-nvim

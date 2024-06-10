@@ -68,7 +68,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-cqFqb2ag/J0192yq0SHjk1hMa/2Eh6tNjGoFq6P7ocs=",
+        "narHash": "sha256-4yCiYMsjnvAMh+wDl8x156rQ62boy7ndbN+lwXL3JMc=",
         "path": "./nixconfig/neovim",
         "type": "path"
       },

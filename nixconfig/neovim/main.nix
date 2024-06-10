@@ -24,7 +24,7 @@
     tree-sitter-cpp
     tree-sitter-python
     tree-sitter-vim
-    tree-sitter-vimdoc
+tree-sitter-vimdoc
     tree-sitter-bash
   ];
 in {
@@ -43,6 +43,7 @@ in {
       tailwindcss-language-server
       emmet-ls
       rust-analyzer
+      clang-tools
       nixd
     ];
 

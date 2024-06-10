@@ -35,6 +35,7 @@ local servers = {
 	tailwindcss = {},
 	emmet_ls = {},
 	rust_analyzer = {},
+	clangd = {},
 	gdscript = {},
 }
 

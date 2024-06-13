@@ -1,36 +1,11 @@
 {
   pkgs,
   ...
-}: let
-  treesitter_packages = p: with p; [
-    tree-sitter-norg
-    tree-sitter-lua
-    tree-sitter-javascript
-    tree-sitter-typescript
-    tree-sitter-tsx
-    tree-sitter-svelte
-    tree-sitter-json
-    tree-sitter-yaml
-    tree-sitter-html
-    tree-sitter-css
-    tree-sitter-scss
-    tree-sitter-rust
-    tree-sitter-toml
-    tree-sitter-nix
-    tree-sitter-gdscript
-    tree-sitter-godot-resource
-    tree-sitter-dockerfile
-    tree-sitter-c
-    tree-sitter-cpp
-    tree-sitter-python
-    tree-sitter-vim
-tree-sitter-vimdoc
-    tree-sitter-bash
-  ];
-in {
+}: {
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;
+
     extraPackages = with pkgs; [
       gcc
       ripgrep
@@ -48,18 +23,35 @@ in {
     ];
 
     plugins = with pkgs.vimPlugins; [
-      neorg
-      lua-utils
-      nvim-nio
-      pathlib
-      nui-nvim
-      plenary-nvim
-
       nvim-lspconfig
       neodev-nvim
       fidget-nvim
 
-      (nvim-treesitter.withPlugins(treesitter_packages))
+      (nvim-treesitter.withPlugins(p: with p; [
+        tree-sitter-norg
+        tree-sitter-lua
+        tree-sitter-javascript
+        tree-sitter-typescript
+        tree-sitter-tsx
+        tree-sitter-svelte
+        tree-sitter-json
+        tree-sitter-yaml
+        tree-sitter-html
+        tree-sitter-css
+        tree-sitter-scss
+        tree-sitter-rust
+        tree-sitter-toml
+        tree-sitter-nix
+        tree-sitter-gdscript
+        tree-sitter-godot-resource
+        tree-sitter-dockerfile
+        tree-sitter-c
+        tree-sitter-cpp
+        tree-sitter-python
+        tree-sitter-vim
+        tree-sitter-vimdoc
+        tree-sitter-bash
+      ]))
 
       nvim-cmp
       cmp-nvim-lsp
@@ -92,6 +84,8 @@ in {
       vim-fugitive
       gitsigns-nvim
       diffview-nvim
+
+      # neorg # lua-utils not found
 
       vimtex
 

@@ -7,7 +7,7 @@ local theme = utils.table.join(
   colorscheme,
   {
     font = "Inter Medium 10",
-    font_mono = "JetBrainsMono Nerd Font Medium",
+    font_mono = "JetBrainsMonoNL Nerd Font Mono",
 
     border_normal = colorscheme.base["850"],
     border_focus = colorscheme.border,

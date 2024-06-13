@@ -21,8 +21,8 @@ local col_taskbar_inactive = theme.base["700"]
 
 local font_text = theme.font_mono .. " 9"
 local font_separators = theme.font_mono .. " 19"
-local font_tags = theme.font_mono .. " 11"
-local font_icon_launcher = theme.font_mono .. " 14"
+local font_tags = theme.font_mono .. " 15"
+local font_icon_launcher = theme.font_mono .. " 18"
 
 theme.bg_systray = col_bg
 theme.systray_icon_spacing = 8
@@ -226,7 +226,7 @@ local function init(s, config)
         top = -1,
         {
             widget = wibox.widget.textbox,
-            markup = "<span></span>",
+            markup = "<span>󱄅</span>",
             font = font_icon_launcher,
             forced_width = 20,
         },

@@ -25,6 +25,7 @@ in {
   services.gvfs.enable = true; # Mounting and trash support for file managers
   security.polkit.enable = true;
 
+  # Git
   programs.git = {
     enable = true;
     config = {
@@ -32,17 +33,18 @@ in {
     };
   };
 
-  # X Server
+  # Fish
+  programs.fish = {
+    enable = true;
+    package = pkgs-unstable.fish;
+  };
+
+  # Graphics
   services.xserver = {
     enable = true;
 
     displayManager = {
       lightdm.enable = true;
-
-      # autoLogin = {
-      #   enable = true;
-      #   user = username;
-      # };
 
       sessionCommands = ''
         setxkbmap -option compose:ralt -option caps:escape_shifted_capslock &
@@ -55,6 +57,13 @@ in {
       awesome.enable = true;
     };
   };
+
+  # services.displayManager = {
+  #   autoLogin = {
+  #     enable = true;
+  #     user = username;
+  #   };
+  # };
 
   # Audio
   security.rtkit.enable = true;
@@ -146,12 +155,6 @@ in {
       (import ../../nixconfig/tmux (inputs // { pkgs = pkgs-unstable; }))
       latex-config.config
     ];
-
-    # Fish
-    programs.fish = {
-      enable = true;
-      package = pkgs-unstable.fish;
-    };
 
     # Flameshot
     services.flameshot = {

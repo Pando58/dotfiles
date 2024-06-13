@@ -1,4 +1,4 @@
-require "config.plugins.neorg"
+-- require "config.plugins.neorg"
 require "config.plugins.completion"
 require "config.plugins.fidget"
 require "config.plugins.lualine"

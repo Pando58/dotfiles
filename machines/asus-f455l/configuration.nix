@@ -33,9 +33,9 @@
     LC_TIME = "es_MX.UTF-8";
   };
 
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Networking

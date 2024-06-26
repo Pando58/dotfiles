@@ -38,7 +38,6 @@
   services.xserver = {
     videoDrivers = ["nvidia"];
     exportConfiguration = true;
-    dpi = 96;
   };
 
   hardware.opengl = {

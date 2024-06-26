@@ -37,6 +37,5 @@
   # Graphics
   services.xserver = {
     exportConfiguration = true;
-    dpi = 96;
   };
 }

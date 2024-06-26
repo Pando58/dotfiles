@@ -16,12 +16,12 @@
       fsType = "ext4";
       neededForBoot = true;
     };
-    "/mnt/usb" = {
+    "/mnt/K128_files" = {
       device = "/dev/disk/by-label/K128_files";
       fsType = "ext4";
       neededForBoot = false;
     };
-    "/mnt/usb_exfat" = {
+    "/mnt/K128_exfat" = {
       device = "/dev/disk/by-label/K128_exfat";
       fsType = "exfat";
       neededForBoot = false;
@@ -33,7 +33,6 @@
   # Graphics
   services.xserver = {
     exportConfiguration = true;
-    dpi = 96;
   };
 
   hardware.opengl = {

@@ -53,29 +53,13 @@ in {
   # Graphics
   services.xserver = {
     enable = true;
+    dpi = 96;
 
     displayManager = {
-      lightdm.enable = true;
-
-      sessionCommands = ''
-        setxkbmap -option compose:ralt -option caps:escape_shifted_capslock &
-        ~/.fehbg &
-        redshift -P -O 4500 -g 1.1 -b 1 &
-        picom &
-        dex -a -s ~/.config/autostart &
-      '';
+      startx.enable = true;
     };
 
-    windowManager = {
-      awesome.enable = true;
-    };
-  };
-
-  services.displayManager = {
-    autoLogin = {
-      enable = true;
-      user = username;
-    };
+    windowManager.awesome.enable = true;
   };
 
   # Audio
@@ -177,8 +161,14 @@ in {
       rofi = { recursive = true; source = ../../config/home/.config/rofi; };
       rofimoji = { recursive = true; source = ../../config/home/.config/rofimoji; };
       "rofimoji.rc" = { source = ../../config/home/.config/rofimoji.rc; };
-      "autostart/nm-applet.desktop" = { source = ../../config/home/.config/autostart/nm-applet.desktop; };
     };
+
+    # Graphics
+    home.file.".xinitrc" = {
+      source = ../../config/xinit/xinitrc.sh;
+    };
+
+    xresources.extraConfig = "Xft.dpi: 96";
 
     # Program config
     imports = [

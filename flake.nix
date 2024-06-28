@@ -6,21 +6,18 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-generators.url = "github:nix-community/nixos-generators";
-    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
     musnix.url = "github:musnix/musnix";
     musnix.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
-    neovim-config.url = "path:./nixconfig/neovim";
+    neovim-config.url = "path:nixconfig/neovim";
     neovim-config.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    latex-config.url = "path:./nixconfig/latex";
+    latex-config.url = "path:nixconfig/latex";
   };
 
   outputs = inputs @ {
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
-    nixos-generators,
     musnix,
     neovim-config,
     latex-config,
@@ -49,9 +46,8 @@
         machines/main
       ];
     };
-    packages.x86_64-linux.iso = nixos-generators.nixosGenerate {
+    nixosConfigurations.iso = nixpkgs.lib.nixosSystem {
       inherit system;
-      format = "iso";
       specialArgs = { inherit pkgs-unstable hostname system neovim-config latex-config; stateVersion = "23.11"; };
       modules = [
         home-manager.nixosModules.home-manager

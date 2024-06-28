@@ -8,15 +8,17 @@
   ...
 }: {
   imports = [
+    ./usb-configuration.nix
     ./hardware-configuration.nix
   ];
 
-  system.stateVersion = stateVersion;
+  # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/installer/cd-dvd/installation-cd-base.nix#L49
+  system.stateVersion = lib.mkDefault lib.trivial.release;
   nixpkgs.hostPlatform = lib.mkDefault system;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   time.timeZone = "America/Mexico_City";
 

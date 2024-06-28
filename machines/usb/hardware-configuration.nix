@@ -5,11 +5,6 @@
   modulesPath,
   ...
 }: {
-  # hardware.enableAllFirmware = true;
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  boot.supportedFilesystems = [ "ntfs" ];
-
   fileSystems = {
     "/nix/.rw-store" = lib.mkForce {
       device = "/dev/disk/by-label/K128_nixstore";

@@ -125,20 +125,37 @@ merge_tables(config, {
   cursor_blink_ease_out = "Constant",
 
   disable_default_key_bindings = true,
+  leader = {
+    mods = "SHIFT",
+    key = "Space",
+    timeout_milliseconds = 1000,
+  },
   keys = {
-    { mods = "CTRL|SHIFT",     key = "c",   action = act.CopyTo("Clipboard") },
-    { mods = "CTRL|SHIFT",     key = "v",   action = act.PasteFrom("Clipboard") },
+    { mods = "CTRL|SHIFT",        key = "c", action = act.CopyTo("Clipboard") },
+    { mods = "CTRL|SHIFT",        key = "v", action = act.PasteFrom("Clipboard") },
 
-    { mods = "CTRL",           key = "=",   action = act.IncreaseFontSize },
-    { mods = "CTRL",           key = "-",   action = act.DecreaseFontSize },
-    { mods = "CTRL",           key = "0",   action = act.ResetFontSize },
+    { mods = "LEADER|SHIFT",      key = "+", action = act.IncreaseFontSize },
+    { mods = "LEADER|SHIFT",      key = "_", action = act.DecreaseFontSize },
+    { mods = "LEADER|SHIFT",      key = ")", action = act.ResetFontSize },
 
-    { mods = "CTRL",           key = "Tab", action = act.ActivateTabRelative(1) },
-    { mods = "CTRL|SHIFT",     key = "Tab", action = act.ActivateTabRelative(-1) },
-    { mods = "ALT",            key = "Tab", action = act.SpawnTab("DefaultDomain") },
-    { mods = "ALT|SHIFT",      key = "Tab", action = act.CloseCurrentTab({ confirm = true }) },
-    { mods = "CTRL|ALT",       key = "Tab", action = act.MoveTabRelative(1) },
-    { mods = "CTRL|ALT|SHIFT", key = "Tab", action = act.MoveTabRelative(-1) },
+    { mods = "LEADER|SHIFT",      key = ">", action = act.ActivateTabRelative(1) },
+    { mods = "LEADER|SHIFT",      key = "<", action = act.ActivateTabRelative(-1) },
+    { mods = "LEADER|CTRL|SHIFT", key = ">", action = act.MoveTabRelative(1) },
+    { mods = "LEADER|CTRL|SHIFT", key = "<", action = act.MoveTabRelative(-1) },
+
+    { mods = "LEADER|SHIFT",      key = "s", action = act.SplitPane({ direction = "Right" }) },
+    { mods = "LEADER|SHIFT",      key = "v", action = act.SplitPane({ direction = "Down" }) },
+    { mods = "LEADER|CTRL|SHIFT", key = "s", action = act.SplitPane({ direction = "Right", command = { args = { "fish" } }, }) },
+    { mods = "LEADER|CTRL|SHIFT", key = "v", action = act.SplitPane({ direction = "Down", command = { args = { "fish" } }, }) },
+    { mods = "LEADER|SHIFT",      key = "h", action = act.ActivatePaneDirection("Left") },
+    { mods = "LEADER|SHIFT",      key = "j", action = act.ActivatePaneDirection("Down") },
+    { mods = "LEADER|SHIFT",      key = "k", action = act.ActivatePaneDirection("Up") },
+    { mods = "LEADER|SHIFT",      key = "l", action = act.ActivatePaneDirection("Right") },
+    { mods = "LEADER|SHIFT",      key = "m", action = act.PaneSelect({ mode = "SwapWithActive" }) },
+
+    { mods = "LEADER|SHIFT",      key = "n", action = act.SpawnTab("DefaultDomain") },
+    { mods = "LEADER|CTRL|SHIFT", key = "n", action = act.SpawnCommandInNewTab({ args = { "fish" } }) },
+    { mods = "LEADER|SHIFT",      key = "q", action = act.CloseCurrentPane({ confirm = true }) },
   },
 
   default_prog = { "tmux" },

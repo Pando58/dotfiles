@@ -18,6 +18,32 @@ if status is-interactive
   abbr gca git commit --amend
   abbr gcan git commit --amend --no-edit
   abbr gcam --set-cursor 'git commit --amend -m "%"'
+  abbr gsl git stash list
+  abbr gspo git stash pop
+  abbr gsa git stash apply
+  abbr gsd git stash drop
+  abbr gsp git stash push
+  abbr gspm --set-cursor 'git stash push -m "%"'
+  abbr gspu git stash push --include-untracked
+  abbr gspum --set-cursor 'git stash push --include-untracked -m "%"'
+  abbr gsps git stash push --staged
+  abbr gspsm --set-cursor 'git stash push --staged -m "%"'
+  abbr gco git checkout
+  abbr gcob git checkout -b
+  abbr gre git reset
+  abbr gm git merge
+  abbr gmm --set-cursor 'git merge -m "%"'
+  abbr grb git rebase
+  abbr grbc git rebase --continue
+  abbr grbcn git -c core.editor=true rebase --continue
+  abbr grba git rebase --abort
+  abbr grbs git rebase --skip
+  abbr grbi git rebase -i
+  abbr gcp git cherry-pick
+  abbr gcpc git cherry-pick --continue
+  abbr gcpcn git -c core.editor=true cherry-pick --continue
+  abbr gcpa git cherry-pick --abort
+  abbr gcps git cherry-pick --skip
 
   abbr lg lazygit
 end

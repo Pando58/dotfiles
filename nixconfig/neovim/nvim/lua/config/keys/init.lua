@@ -1,6 +1,7 @@
 require("config.keys.misc").keys()
 require("config.keys.telescope").keys()
 require("config.keys.neorg").keys()
+require("config.keys.markdown-preview").keys()
 -- require("config.keys.neoscroll").keys()
 require("config.keys.neotree").keys()
 require("config.keys.oil").keys()

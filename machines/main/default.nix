@@ -151,6 +151,7 @@ in {
       dtrx
       ventoy
       kicad
+      gimp-with-plugins
     ]);
 
     # Dotfiles

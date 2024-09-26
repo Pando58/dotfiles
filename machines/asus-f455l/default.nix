@@ -149,6 +149,7 @@ in {
       brave
       dtrx
       ventoy
+      gimp-with-plugins
     ]);
 
     # Dotfiles

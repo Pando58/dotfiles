@@ -5,7 +5,7 @@ local servers = {
 			telemetry = { enable = false },
 		},
 	},
-	tsserver = {
+	ts_ls = {
 		-- Ignored, doesn't work
 		-- javascript = { format = { enable = false, }, },
 		-- typescript = { format = { enable = false, }, },

@@ -1,8 +1,6 @@
 if status is-interactive
   set -g fish_prompt_pwd_dir_length 0
 
-  bind \eq exit
-
   abbr logout kill -9 -1
   abbr gs git status
   abbr gl git log
@@ -28,8 +26,17 @@ if status is-interactive
   abbr gspum --set-cursor 'git stash push --include-untracked -m "%"'
   abbr gsps git stash push --staged
   abbr gspsm --set-cursor 'git stash push --staged -m "%"'
+  abbr gspk git stash push --keep-index
+  abbr gspkm --set-cursor 'git stash push --keep-index -m "%"'
+  abbr gspku git stash push --keep-index --include-untracked
+  abbr gspkum --set-cursor 'git stash push --keep-index --include-untracked -m "%"'
   abbr gco git checkout
   abbr gcob git checkout -b
+  abbr gb git branch
+  abbr gba git branch --all
+  abbr gbm git branch --move
+  abbr gbf git branch --force
+  abbr gbd git branch --delete
   abbr gre git reset
   abbr gm git merge
   abbr gmm --set-cursor 'git merge -m "%"'
@@ -44,6 +51,12 @@ if status is-interactive
   abbr gcpcn git -c core.editor=true cherry-pick --continue
   abbr gcpa git cherry-pick --abort
   abbr gcps git cherry-pick --skip
+  abbr gwl git worktree list
+  abbr gwa git worktree add
+  abbr gwr git worktree remove
+  abbr gwm git worktree move
+  abbr gwlo git worktree lock
+  abbr gwu git worktree unlock
 
   abbr lg lazygit
 end

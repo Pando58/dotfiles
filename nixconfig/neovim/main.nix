@@ -87,7 +87,9 @@
 
       # neorg # lua-utils not found
 
+      render-markdown-nvim
       markdown-preview-nvim
+
       vimtex
 
       sonokai

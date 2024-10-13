@@ -34,13 +34,18 @@ local servers = {
 	cssls = {},
 	tailwindcss = {},
 	emmet_ls = {},
-	rust_analyzer = {},
+	rust_analyzer = {
+		diagnostics = {
+			enable = true,
+		},
+	},
 	clangd = {},
 	gdscript = {},
 }
 
 local on_attach = function (_client, buffer_number)
 	require("config.keys.lsp").keys_lsp(buffer_number)
+	vim.lsp.inlay_hint.enable()
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

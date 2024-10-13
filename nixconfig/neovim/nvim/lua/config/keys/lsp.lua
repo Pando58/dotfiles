@@ -1,11 +1,15 @@
 local telescope_builtin = require("telescope.builtin")
 
 local function map(keys, func, bufnr, desc)
-if desc then
+	if desc then
 		desc = "LSP: " .. desc
 	end
 
 	vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
+end
+
+local function toggle_inlay_hints()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end
 
 return {
@@ -26,6 +30,8 @@ return {
 		vim.keymap.set("n", "<leader>d.", vim.diagnostic.goto_next, { desc = "Go to next [d]iagnostic message" })
 		vim.keymap.set("n", "<leader>dm", vim.diagnostic.open_float, { desc = "Open floating [d]iagnostic [m]essage" })
 		vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Open [d]iagnostics [l]ist" })
+
+		map("<leader>lh", toggle_inlay_hints, buffer_number, "Toggle inlay [h]ints")
 
 		-- Format current buffer with LSP
 		vim.api.nvim_buf_create_user_command(buffer_number, "F", function ()

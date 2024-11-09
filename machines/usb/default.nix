@@ -148,7 +148,7 @@ in {
     imports = [
       neovim-config.config
       (import ../../nixconfig/tmux (inputs // { pkgs = pkgs-unstable; }))
-      latex-config.config
+      # latex-config.config
     ];
 
     # Flameshot

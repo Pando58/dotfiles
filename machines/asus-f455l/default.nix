@@ -143,6 +143,8 @@ in {
     ]) ++ (with pkgs-unstable; [
       picom
       wezterm
+      fzf
+      yazi
       rofi
       rofimoji
       lazygit

@@ -19,7 +19,9 @@ in {
   # Programs
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = [];
+  environment.systemPackages = with pkgs; [
+    sshfs
+  ];
 
   programs.dconf.enable = true; # Needed for GTK and virtualization
   services.gvfs.enable = true; # Mounting and trash support for file managers

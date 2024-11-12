@@ -22,6 +22,7 @@ in {
     virt-manager
     wineWowPackages.stable
     winetricks
+    sshfs
   ];
 
   programs.dconf.enable = true; # Needed for GTK and virtualization

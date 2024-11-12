@@ -36,6 +36,16 @@ in {
     };
   };
 
+  # SSH
+  services.openssh = {
+    enable = true;
+    startWhenNeeded = true;
+    settings = {
+      X11Forwarding = true;
+      PasswordAuthentication = false;
+    };
+  };
+
   # Fish
   programs.fish = {
     enable = true;

@@ -4,7 +4,13 @@ if status is-interactive
   abbr logout kill -9 -1
   abbr gs git status
   abbr gl git log
-  abbr gl1 git log -n1
+  abbr gla git log --all
+  abbr glg git log --graph
+  abbr glag git log --all --graph
+  abbr gln git log -n
+  abbr glan git log --all -n
+  abbr glgn git log --graph -n
+  abbr glagn git log --all --graph -n
   abbr gd git diff
   abbr gds git diff --staged
   abbr ga git add
@@ -32,12 +38,26 @@ if status is-interactive
   abbr gspkum --set-cursor 'git stash push --keep-index --include-untracked -m "%"'
   abbr gco git checkout
   abbr gcob git checkout -b
+  abbr gcot git checkout --track
+  abbr gcod git checkout --detach
   abbr gb git branch
+  abbr gbv git branch -vv
   abbr gba git branch --all
+  abbr gbav git branch --all -vv
   abbr gbm git branch --move
   abbr gbf git branch --force
   abbr gbd git branch --delete
   abbr gre git reset
+  abbr gres git reset --soft
+  abbr greh git reset --hard
+  abbr gcl git clean
+  abbr gcldf git clean -df
+  abbr gf git fetch
+  abbr gfa git fetch --all
+  abbr gfap git fetch --all --prune
+  abbr gps git push
+  abbr gpsu git push -u
+  abbr gpl git pull
   abbr gm git merge
   abbr gmm --set-cursor 'git merge -m "%"'
   abbr grb git rebase

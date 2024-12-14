@@ -68,6 +68,7 @@ if status is-interactive
   abbr grba git rebase --abort
   abbr grbs git rebase --skip
   abbr grbi git rebase -i
+  abbr grbo git rebase --onto
   abbr gcp git cherry-pick
   abbr gcpc git cherry-pick --continue
   abbr gcpcn git -c core.editor=true cherry-pick --continue

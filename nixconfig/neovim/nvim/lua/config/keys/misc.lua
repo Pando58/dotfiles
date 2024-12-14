@@ -55,8 +55,8 @@ return {
 		-- Tabs
 		map("n", "<leader><tab>n", ":tabnew<CR>", { desc = "New tab", silent = true })
 		map("n", "<leader><tab>q", ":tabclose<CR>", { desc = "Close tab", silent = true })
-		map("n", "<leader><tab>h", ":tabprev<CR>", { desc = "Go to previous tab", silent = true })
-		map("n", "<leader><tab>l", ":tabnext<CR>", { desc = "Go to next tab", silent = true })
+		map("n", "<leader><tab>,", ":tabprev<CR>", { desc = "Go to previous tab", silent = true })
+		map("n", "<leader><tab>.", ":tabnext<CR>", { desc = "Go to next tab", silent = true })
 
 		-- Buffers
 		map("n", "<A-,>", ":BufferPrevious<CR>", { silent = true })

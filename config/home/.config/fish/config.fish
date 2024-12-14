@@ -23,6 +23,8 @@ if status is-interactive
   abbr gcan git commit --amend --no-edit
   abbr gcam --set-cursor 'git commit --amend -m "%"'
   abbr gsl git stash list
+  abbr gss git stash show
+  abbr gssp git stash show --patch
   abbr gspo git stash pop
   abbr gsa git stash apply
   abbr gsd git stash drop

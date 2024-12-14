@@ -24,6 +24,11 @@ function fish_prompt
     else
         echo -ns (set_color $c_light -b $c_dark) " " $reset
     end
+    if string length --quiet $SSH_CONNECTION
+        echo -ns (set_color $c_dark -b $c_main2)  $reset
+        echo -ns (set_color $c_dark -b $c_main2 --bold) " SSH " $reset
+        echo -ns (set_color $c_main2 -b $c_dark)  $reset
+    end
     echo -ns (set_color $c_dark -b $c_main)  $reset
     echo -ns (set_color $c_dark -b $c_main --bold) " $(prompt_pwd) " $reset
     if string length --quiet $IN_NIX_SHELL

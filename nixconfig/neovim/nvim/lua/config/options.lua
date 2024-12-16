@@ -30,6 +30,8 @@ for option, value in pairs({
 	undofile = true,
 
 	updatetime = 500,
+
+	jumpoptions = "",
 }) do vim.opt[option] = value end
 
 vim.opt.listchars:append("trail:▓")

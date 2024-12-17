@@ -43,7 +43,7 @@ return {
 		map({ "n", "x" }, "<leader>C", ":set cursorcolumn!<CR>:set cursorline!<CR>", { desc = "Toggle cursor display", silent = true })
 
 		-- Terminal
-		map("n", "<leader>t", ":terminal<CR>i", { desc = "Open a new terminal window", silent = true })
+		map("n", "<leader>T", ":terminal<CR>i", { desc = "Open a new terminal window", silent = true })
 		map("t", "<C-[>", "<C-\\><C-n>")
 
 		-- Window split
@@ -53,18 +53,21 @@ return {
 		map("n", "<leader>wl", ":vsplit<CR><C-w>l", { silent = true })
 
 		-- Tabs
-		map("n", "<leader><tab>n", ":tabnew<CR>", { desc = "New tab", silent = true })
-		map("n", "<leader><tab>q", ":tabclose<CR>", { desc = "Close tab", silent = true })
-		map("n", "<leader><tab>,", ":tabprev<CR>", { desc = "Go to previous tab", silent = true })
-		map("n", "<leader><tab>.", ":tabnext<CR>", { desc = "Go to next tab", silent = true })
+		map("n", "<leader>tn", ":tabnew<CR>", { desc = "New tab", silent = true })
+		map("n", "<leader>ts", ":tab split<CR>", { desc = "New tab", silent = true })
+		map("n", "<leader>tc", ":tabclose<CR>", { desc = "Close tab", silent = true })
+		map("n", "<A-,>", ":tabprev<CR>", { desc = "Go to previous tab", silent = true })
+		map("n", "<A-.>", ":tabnext<CR>", { desc = "Go to next tab", silent = true })
+		map("n", "<A-<>", ":-tabmove<CR>", { desc = "Swap with previous tab", silent = true })
+		map("n", "<A->>", ":+tabmove<CR>", { desc = "Swap with next tab", silent = true })
 
 		-- Buffers
-		map("n", "<A-,>", ":BufferPrevious<CR>", { silent = true })
-		map("n", "<A-.>", ":BufferNext<CR>", { silent = true })
-		map("n", "<A-<>", ":BufferMovePrevious<CR>", { silent = true })
-		map("n", "<A->>", ":BufferMoveNext<CR>", { silent = true })
-		map("n", "<A-q>", ":BufferClose<CR>", { desc = "Close current buffer", silent = true })
-		map("n", "<A-Q>", ":BufferClose!<CR>", { desc = "Close current buffer forced", silent = true })
-		map("n", "<leader>n", ":enew<CR>", { desc = "[n]ew buffer", silent = true })
+		-- map("n", "<leader>b,", ":BufferPrevious<CR>", { silent = true })
+		-- map("n", "<leader>b.", ":BufferNext<CR>", { silent = true })
+		-- map("n", "<leader>b<", ":BufferMovePrevious<CR>", { silent = true })
+		-- map("n", "<leader>b>", ":BufferMoveNext<CR>", { silent = true })
+		-- map("n", "<leader>bq", ":BufferClose<CR>", { desc = "Close current buffer", silent = true })
+		-- map("n", "<leader>bQ", ":BufferClose!<CR>", { desc = "Close current buffer forced", silent = true })
+		map("n", "<leader>bn", ":enew<CR>", { desc = "[n]ew buffer", silent = true })
 	end,
 }

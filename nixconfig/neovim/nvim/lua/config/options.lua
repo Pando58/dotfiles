@@ -23,6 +23,8 @@ for option, value in pairs({
 	cursorline = true,
 	cursorcolumn = true,
 
+	showtabline = 2,
+
 	mouse = "a",
 
 	breakindent = true,

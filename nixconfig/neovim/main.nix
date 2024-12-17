@@ -61,7 +61,7 @@
       friendly-snippets
 
       lualine-nvim
-      barbar-nvim
+      tabby-nvim
       neo-tree-nvim
       oil-nvim
       nvim-web-devicons

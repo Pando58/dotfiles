@@ -27,7 +27,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-s6AFBpvY7UXbECRXB44ohhJXfgt9trULqUN2iIa8Poc=",
+        "narHash": "sha256-z/nSg8D2MdwnrMXJgOutPK+mkLt4e4Huir+eQDjLphk=",
         "path": "nixconfig/latex",
         "type": "path"
       },
@@ -54,23 +54,6 @@
         "owner": "musnix",
         "repo": "musnix",
         "type": "github"
-      }
-    },
-    "neovim-config": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-dvEPw4iEL/MLFjgn5jKL+7oQhD85wQDPfg5zubNe/u4=",
-        "path": "nixconfig/neovim",
-        "type": "path"
-      },
-      "original": {
-        "path": "nixconfig/neovim",
-        "type": "path"
       }
     },
     "nixpkgs": {
@@ -126,7 +109,6 @@
         "home-manager": "home-manager",
         "latex-config": "latex-config",
         "musnix": "musnix",
-        "neovim-config": "neovim-config",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }

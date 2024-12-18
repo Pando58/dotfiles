@@ -9,8 +9,6 @@
     musnix.url = "github:musnix/musnix";
     musnix.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
-    neovim-config.url = "path:nixconfig/neovim";
-    neovim-config.inputs.nixpkgs.follows = "nixpkgs-unstable";
     latex-config.url = "path:nixconfig/latex";
   };
 
@@ -19,7 +17,6 @@
     nixpkgs-unstable,
     home-manager,
     musnix,
-    neovim-config,
     latex-config,
     ...
   }: let
@@ -32,7 +29,7 @@
   in {
     nixosConfigurations.main = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit pkgs-unstable hostname system neovim-config latex-config; stateVersion = "23.11"; };
+      specialArgs = { inherit pkgs-unstable hostname system latex-config; stateVersion = "23.11"; };
       modules = [
         home-manager.nixosModules.home-manager
         {
@@ -48,7 +45,7 @@
     };
     nixosConfigurations.iso = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit pkgs-unstable hostname system neovim-config latex-config; stateVersion = "23.11"; };
+      specialArgs = { inherit pkgs-unstable hostname system latex-config; stateVersion = "23.11"; };
       modules = [
         home-manager.nixosModules.home-manager
         {
@@ -63,7 +60,7 @@
     };
     nixosConfigurations.asus-f455l = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit pkgs-unstable hostname system neovim-config latex-config; stateVersion = "23.11"; };
+      specialArgs = { inherit pkgs-unstable hostname system latex-config; stateVersion = "23.11"; };
       modules = [
         home-manager.nixosModules.home-manager
         {

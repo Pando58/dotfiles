@@ -1,4 +1,0 @@
-[Desktop Entry]
-Exec=/usr/bin/setxkbmap -option compose:ralt -option caps:escape_shifted_capslock
-Name=setxkbmap configuration
-Type=Application

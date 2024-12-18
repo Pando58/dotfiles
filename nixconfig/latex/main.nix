@@ -6,8 +6,4 @@
     texliveFull
     zathura
   ];
-
-  xdg.configFile = {
-    zathura = { recursive = true; source = ./zathura; };
-  };
 }

@@ -11,5 +11,7 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-dex -a &
+for f in $HOME/.config/autostart/*.sh; do
+    "$f" &
+done
 exec awesome

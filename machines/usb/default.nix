@@ -11,6 +11,7 @@ in {
   imports = [
     ./configuration.nix
     (import ../../local/machines/usb (inputs // { inherit username; }))
+    ../../nixconfig/neovim
   ];
 
   # Faster building
@@ -27,7 +28,6 @@ in {
     papirus-icon-theme
     vanilla-dmz
     xclip
-    dex
     feh
     xdragon
     redshift
@@ -62,6 +62,25 @@ in {
     enable = true;
     config = {
       init.defaultBranch = "main";
+    };
+  };
+
+  # Services
+  systemd.user.services = {
+    stow-dotfiles = {
+      path = with pkgs; [ stow ];
+      script = "stow -d /mnt/K128_files/dotfiles/config/nixos -t $HOME home";
+      wantedBy = ["default.target"];
+    };
+    stow-ssh = {
+      path = with pkgs; [ stow ];
+      script = "mkdir -p $HOME/.ssh; stow -d /mnt/K128_files/ssh -t $HOME/.ssh .";
+      wantedBy = ["default.target"];
+    };
+    stow-autostart = {
+      path = with pkgs; [ stow ];
+      script = "mkdir -p $HOME/.config/autostart; stow -d /mnt/K128_files/config -t $HOME/.config/autostart autostart";
+      wantedBy = ["default.target"];
     };
   };
 

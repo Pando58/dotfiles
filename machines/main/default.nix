@@ -28,7 +28,6 @@ in {
     papirus-icon-theme
     vanilla-dmz
     xclip
-    dex
     feh
     xdragon
     redshift

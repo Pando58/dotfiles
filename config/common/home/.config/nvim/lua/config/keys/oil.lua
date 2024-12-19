@@ -4,6 +4,6 @@ end
 
 return {
 	keys = function ()
-		map("<leader>ee", ":Oil<CR>", "[e]xplorer [e]dit")
+		map("<leader>os", ":Oil<CR>", "[o]il [s]how")
 	end,
 }

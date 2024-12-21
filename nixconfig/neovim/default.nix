@@ -11,7 +11,7 @@
       packages.myVimPackage = with pkgs-unstable.vimPlugins; {
         start = [
           nvim-lspconfig
-          neodev-nvim
+          lazydev-nvim
           fidget-nvim
 
           (nvim-treesitter.withPlugins(p: with p; [

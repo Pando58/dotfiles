@@ -1,9 +1,14 @@
 local servers = {
 	lua_ls = {
-		Lua = {
-			workspace = { checkThirdParty = false },
-			telemetry = { enable = false },
+		config = {
+			Lua = {
+				workspace = { checkThirdParty = false },
+				telemetry = { enable = false },
+			},
 		},
+		load = function ()
+			require("lazydev").setup()
+		end
 	},
 	ts_ls = {
 		-- Ignored, doesn't work
@@ -11,11 +16,13 @@ local servers = {
 		-- typescript = { format = { enable = false, }, },
 	},
 	svelte = {
-		svelte = {
-			plugin = {
-				svelte = {
-					format = {
-						enable = false,
+		config = {
+			svelte = {
+				plugin = {
+					svelte = {
+						format = {
+							enable = false,
+						},
 					},
 				},
 			},
@@ -35,12 +42,15 @@ local servers = {
 	tailwindcss = {},
 	emmet_ls = {},
 	rust_analyzer = {
-		diagnostics = {
-			enable = true,
+		config = {
+			diagnostics = {
+				enable = true,
+			},
 		},
 	},
 	clangd = {},
 	gdscript = {},
+	nixd = {},
 }
 
 local on_attach = function (_client, buffer_number)
@@ -64,37 +74,30 @@ return {
 				require("lspconfig")[server_name].setup({
 					on_attach = on_attach,
 					capabilities = capabilities,
-					settings = servers[server_name],
+					server_config = servers[server_name].config or {},
 				})
-			end,
-			lua_ls = function ()
-				require("neodev").setup()
 
-				require("lspconfig").lua_ls.setup({
-					on_attach = on_attach,
-					capabilities = capabilities,
-					settings = servers.lua_ls,
-				})
+				local load = servers[server_name].load
+
+				if load then
+					load()
+				end
 			end,
 		})
 	end,
 	setup_nix = function ()
-		for server_name, settings in pairs(servers) do
-			if (server_name == "lua_ls") then
-				require("neodev").setup()
-			end
-
+		for server_name, server_config in pairs(servers) do
 			require("lspconfig")[server_name].setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
-				settings = settings,
+				server_config = server_config.config or {},
 			})
-		end
 
-		require("lspconfig").nixd.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-			settings = {},
-		})
+			local load = server_config.load
+
+			if load then
+				load()
+			end
+		end
 	end,
 }

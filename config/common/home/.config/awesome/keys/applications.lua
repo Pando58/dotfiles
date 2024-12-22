@@ -14,6 +14,11 @@ return {
                 { group = "launcher", description = "Launch terminal (WezTerm)" }
             ),
             awful.key(
+                { mod, "Shift" }, "t",
+                function () awful.spawn("wezterm -e fish") end,
+                { group = "launcher", description = "Launch terminal (WezTerm) with fish" }
+            ),
+            awful.key(
                 { mod }, "b",
                 function () awful.spawn("brave") end,
                 { group = "launcher", description = "Launch web browser (Brave)" }

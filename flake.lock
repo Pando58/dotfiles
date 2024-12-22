@@ -104,13 +104,30 @@
         "type": "github"
       }
     },
+    "nvim-colorful-winsep": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726911725,
+        "narHash": "sha256-OlddU0ehlkbrLzI+Wsq53azzT72HP+75UsaVqIziSvs=",
+        "owner": "nvim-zh",
+        "repo": "colorful-winsep.nvim",
+        "rev": "0070484536ea55ec64a8453d41e3badace04a61a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-zh",
+        "repo": "colorful-winsep.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "latex-config": "latex-config",
         "musnix": "musnix",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "nvim-colorful-winsep": "nvim-colorful-winsep"
       }
     }
   },

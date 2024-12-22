@@ -9,6 +9,9 @@
     musnix.url = "github:musnix/musnix";
     musnix.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
+    nvim-colorful-winsep.url = "github:nvim-zh/colorful-winsep.nvim";
+    nvim-colorful-winsep.flake = false;
+
     latex-config.url = "path:nixconfig/latex";
   };
 
@@ -25,6 +28,16 @@
     pkgs-unstable = import nixpkgs-unstable {
       inherit system;
       config.allowUnfree = true;
+      overlays = [
+          (final: prev: {
+            vimPlugins = prev.vimPlugins // {
+              colorful-winsep-nvim = prev.vimUtils.buildVimPlugin {
+                name = "colorful-winsep-nvim";
+                src = inputs.nvim-colorful-winsep;
+              };
+            };
+          })
+        ];
     };
   in {
     nixosConfigurations.main = nixpkgs.lib.nixosSystem {

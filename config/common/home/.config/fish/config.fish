@@ -1,5 +1,9 @@
 if status is-interactive
+  export SHELL=$(which fish)
+
   set -g fish_prompt_pwd_dir_length 0
+
+  fzf_key_bindings
 
   abbr logout kill -9 -1
   abbr gs git status
@@ -40,6 +44,7 @@ if status is-interactive
   abbr gspkum --set-cursor 'git stash push --keep-index --include-untracked -m "%"'
   abbr gco git checkout
   abbr gcob git checkout -b
+  abbr gcoB git checkout -B
   abbr gcot git checkout --track
   abbr gcod git checkout --detach
   abbr gb git branch

@@ -1,6 +1,6 @@
 configuration {
 	modes: "drun,run,filebrowser,window";
-	font: "JetBrainsMono Nerd Font 10";
+	font: "JetBrainsMonoNL NF 10";
 	show-icons: true;
 	sidebar-mode: true;
 	fixed-num-lines: true;

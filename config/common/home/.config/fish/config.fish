@@ -1,6 +1,8 @@
 if status is-interactive
   set -g fish_prompt_pwd_dir_length 0
 
+  fzf_key_bindings
+
   abbr logout kill -9 -1
   abbr gs git status
   abbr gl git log

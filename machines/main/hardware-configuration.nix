@@ -52,4 +52,8 @@
     powerManagement.enable = false;
     powerManagement.finegrained = false;
   };
+
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 }

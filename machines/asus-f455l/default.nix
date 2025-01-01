@@ -39,6 +39,7 @@ in {
     pavucontrol
     pcmanfm
     networkmanagerapplet
+    bluetui
     flameshot
   ]) ++ (with pkgs-unstable; [
     picom

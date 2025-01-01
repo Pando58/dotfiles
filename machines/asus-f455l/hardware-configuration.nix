@@ -38,4 +38,8 @@
   services.xserver = {
     exportConfiguration = true;
   };
+
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 }

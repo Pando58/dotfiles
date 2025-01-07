@@ -41,6 +41,7 @@ in {
     networkmanagerapplet
     bluetui
     flameshot
+    gimp-with-plugins
   ]) ++ (with pkgs-unstable; [
     picom
     wezterm
@@ -54,7 +55,6 @@ in {
     brave
     dtrx
     ventoy
-    gimp-with-plugins
   ]);
 
   programs.dconf.enable = true; # Needed for GTK and virtualization

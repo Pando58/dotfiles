@@ -39,6 +39,7 @@ in {
     networkmanagerapplet
     bluetui
     flameshot
+    gimp-with-plugins
   ]) ++ (with pkgs-unstable; [
       picom
       wezterm
@@ -53,7 +54,6 @@ in {
       dtrx
       ventoy
       kicad
-      gimp-with-plugins
     ]);
 
 

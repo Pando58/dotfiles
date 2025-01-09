@@ -35,7 +35,10 @@ in {
     alsa-utils
     pulsemixer
     pavucontrol
-    pcmanfm
+    xfce.thunar
+    xfce.thunar-volman
+    xfce.thunar-archive-plugin
+    xfce.thunar-media-tags-plugin
     networkmanagerapplet
     bluetui
     flameshot

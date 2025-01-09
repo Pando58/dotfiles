@@ -30,7 +30,7 @@ return {
             ),
             awful.key(
                 { mod, "Mod1" }, "e",
-                function () awful.spawn("pcmanfm") end,
+                function () awful.spawn("thunar") end,
                 { group = "launcher", description = "Launch file explorer (PCManFM)" }
             ),
             awful.key(

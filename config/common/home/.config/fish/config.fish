@@ -1,4 +1,6 @@
 if status is-interactive
+  export SHELL=$(which fish)
+
   set -g fish_prompt_pwd_dir_length 0
 
   fzf_key_bindings
@@ -6,13 +8,17 @@ if status is-interactive
   abbr logout kill -9 -1
   abbr gs git status
   abbr gl git log
-  abbr gla git log --all
+  abbr gla git log --exclude=refs/stash --all
+  abbr glA git log --all
   abbr glg git log --graph
-  abbr glag git log --all --graph
+  abbr glag git log --exclude=refs/stash --all --graph
+  abbr glAg git log --all --graph
   abbr gln git log -n
-  abbr glan git log --all -n
+  abbr glan git log --exclude=refs/stash --all -n
+  abbr glAn git log --all -n
   abbr glgn git log --graph -n
-  abbr glagn git log --all --graph -n
+  abbr glagn git log --exclude=refs/stash --all --graph -n
+  abbr glAgn git log --all --graph -n
   abbr gd git diff
   abbr gds git diff --staged
   abbr ga git add
@@ -42,6 +48,7 @@ if status is-interactive
   abbr gspkum --set-cursor 'git stash push --keep-index --include-untracked -m "%"'
   abbr gco git checkout
   abbr gcob git checkout -b
+  abbr gcoB git checkout -B
   abbr gcot git checkout --track
   abbr gcod git checkout --detach
   abbr gb git branch

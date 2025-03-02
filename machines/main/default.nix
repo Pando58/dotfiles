@@ -19,7 +19,6 @@ in {
 
   environment.systemPackages = (with pkgs; [
     stow
-    virt-manager
     wineWowPackages.stable
     winetricks
     sshfs
@@ -59,7 +58,6 @@ in {
       kicad
     ]);
 
-
   programs.dconf.enable = true; # Needed for GTK and virtualization
   services.gvfs.enable = true; # Mounting and trash support for file managers
   security.polkit.enable = true;
@@ -82,8 +80,10 @@ in {
     };
   };
 
-  # Virt Manager
+  # QEMU and libvirt
   virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+  programs.virt-manager.enable = true;
 
   # PlatformIO
   services.udev.packages = with pkgs; [

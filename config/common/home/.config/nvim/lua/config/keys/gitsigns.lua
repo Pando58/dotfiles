@@ -18,6 +18,8 @@ return {
 		map("<leader>ghp", gs.preview_hunk_inline, "[g]it [h]unk [p]review")
 		map("<leader>ghr", gs.reset_hunk, "[g]it [h]unk [r]eset")
 
+		vim.keymap.set("v", "<leader>gs", ":'<,'>Gitsigns stage_hunk<CR>", { desc = "[g]it [s]tage visual selection", silent = true })
+
 		vim.keymap.set("n", "]h", function ()
 			if vim.wo.diff then return "]h" end
 			vim.schedule(function () gs.next_hunk() end)

@@ -9,9 +9,6 @@
     musnix.url = "github:musnix/musnix";
     musnix.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
-    nvim-colorful-winsep.url = "github:nvim-zh/colorful-winsep.nvim";
-    nvim-colorful-winsep.flake = false;
-
     latex-config.url = "path:nixconfig/latex";
   };
 

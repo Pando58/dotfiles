@@ -54,7 +54,7 @@
           nvim-web-devicons
           which-key-nvim
           indent-blankline-nvim
-          colorful-winsep-nvim
+          # colorful-winsep-nvim
 
           telescope-nvim
           telescope-fzf-native-nvim

@@ -20,6 +20,28 @@ return {
 
 		vim.keymap.set("v", "<leader>gs", ":'<,'>Gitsigns stage_hunk<CR>", { desc = "[g]it [s]tage visual selection", silent = true })
 
+		vim.keymap.set("n", "<leader>gam", function ()
+			vim.opt.diffopt:remove("algorithm:myers")
+			vim.opt.diffopt:remove("algorithm:patience")
+			vim.opt.diffopt:remove("algorithm:histogram")
+
+			vim.opt.diffopt:append("algorithm:myers")
+		end, { desc = "[g]it set diff [a]lgorithm to [m]yers" })
+		vim.keymap.set("n", "<leader>gap", function ()
+			vim.opt.diffopt:remove("algorithm:myers")
+			vim.opt.diffopt:remove("algorithm:patience")
+			vim.opt.diffopt:remove("algorithm:histogram")
+
+			vim.opt.diffopt:append("algorithm:patience")
+		end, { desc = "[g]it set diff [a]lgorithm to [p]atience" })
+		vim.keymap.set("n", "<leader>gah", function ()
+			vim.opt.diffopt:remove("algorithm:myers")
+			vim.opt.diffopt:remove("algorithm:patience")
+			vim.opt.diffopt:remove("algorithm:histogram")
+
+			vim.opt.diffopt:append("algorithm:histogram")
+		end, { desc = "[g]it set diff [a]lgorithm to [h]istogram" })
+
 		vim.keymap.set("n", "]h", function ()
 			if vim.wo.diff then return "]h" end
 			vim.schedule(function () gs.next_hunk() end)

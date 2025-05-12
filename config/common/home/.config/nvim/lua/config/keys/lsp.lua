@@ -25,6 +25,8 @@ return {
 		map("<leader>ls", telescope_builtin.lsp_document_symbols, buffer_number, "Document [s]ymbols")
 		map("<leader>lS", telescope_builtin.lsp_dynamic_workspace_symbols, buffer_number, "Workspace [S]ymbols")
 
+		map("<leader>lrs", ":LspRestart<CR>", buffer_number, "restart")
+
 		vim.keymap.set("n", "<leader>d,", vim.diagnostic.goto_prev, { desc = "Go to previous [d]iagnostic message" })
 		vim.keymap.set("n", "<leader>d.", vim.diagnostic.goto_next, { desc = "Go to next [d]iagnostic message" })
 		vim.keymap.set("n", "<leader>dm", vim.diagnostic.open_float, { desc = "Open floating [d]iagnostic [m]essage" })

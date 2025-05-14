@@ -18,7 +18,7 @@ require("tabby.tabline").set(function(line)
 	return {
 		{
 			{ "  ", hl = theme.head },
-			line.sep("", theme.head, theme.fill),
+			-- line.sep("", theme.head, theme.fill), -- neovim 0.11
 		},
 		line.tabs().foreach(function(tab)
 			local current = tab.is_current()

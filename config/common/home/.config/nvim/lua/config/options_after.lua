@@ -48,6 +48,12 @@ hl_winbarnc = vim.tbl_extend("force", {}, hl_winbarnc, {
 vim.api.nvim_set_hl(0, "WinBar", hl_winbar)
 vim.api.nvim_set_hl(0, "WinBarNC", hl_winbarnc)
 
+-- neovim 0.11
+-- "Whitespace" hl group was used in tabby to get a transparent background, but it doesn't work anymore
+local hl_tablinefill = vim.api.nvim_get_hl(0, { name = "TabLineFill" })
+hl_tablinefill = vim.tbl_extend("force", {}, hl_tablinefill, { bg = "none" })
+vim.api.nvim_set_hl(0, "TabLineFill", hl_tablinefill)
+
 vim.api.nvim_create_autocmd({ "ModeChanged" }, {
 	callback = function()
 		local mode = vim.api.nvim_get_mode().mode

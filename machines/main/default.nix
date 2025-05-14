@@ -54,7 +54,6 @@ in {
       lazygit
       brave
       dtrx
-      ventoy
       kicad
     ]);
 

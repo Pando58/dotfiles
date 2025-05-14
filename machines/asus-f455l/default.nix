@@ -57,7 +57,6 @@ in {
     lazygit
     brave
     dtrx
-    ventoy
   ]);
 
   programs.dconf.enable = true; # Needed for GTK and virtualization

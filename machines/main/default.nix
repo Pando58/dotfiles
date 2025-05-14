@@ -41,8 +41,8 @@ in {
     networkmanagerapplet
     bluetui
     flameshot
-    gimp-with-plugins
   ]) ++ (with pkgs-unstable; [
+    gimp3-with-plugins
       picom
       wezterm
       fish

@@ -40,11 +40,8 @@
             tree-sitter-bash
           ]))
 
-          nvim-cmp
-          cmp-nvim-lsp
-          cmp-buffer
+          blink-cmp
           luasnip
-          cmp_luasnip
           friendly-snippets
 
           lualine-nvim

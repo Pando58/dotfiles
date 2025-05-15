@@ -59,7 +59,8 @@ local on_attach = function (_client, buffer_number)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+-- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
 return {
 	setup_mason = function ()

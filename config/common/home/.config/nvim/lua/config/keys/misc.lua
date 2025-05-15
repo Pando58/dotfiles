@@ -20,10 +20,10 @@ return {
 		map({ "n", "x" }, "U", function () vim.api.nvim_input(math.floor(vim.api.nvim_win_get_height(0) / 4) .. "<C-y>") end)
 
 		-- Move with ctrl + hjkl in insert mode
-		map("i", "<C-h>", "<Left>")
-		map("i", "<C-j>", "<Down>")
-		map("i", "<C-k>", "<Up>")
-		map("i", "<C-l>", "<Right>")
+		-- map("i", "<C-h>", "<Left>")
+		-- map("i", "<C-j>", "<Down>")
+		-- map("i", "<C-k>", "<Up>")
+		-- map("i", "<C-l>", "<Right>")
 
 		-- Delete, change and paste without replacing the default register
 		map({ "n", "x" }, "<leader>D", "\"_d", { desc = "Delete without replacing the default register" })

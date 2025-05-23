@@ -5,6 +5,8 @@ if status is-interactive
 
   fzf_key_bindings
 
+  bind ctrl-c cancel-commandline
+
   abbr logout kill -9 -1
   abbr gs git status
   abbr gl git log

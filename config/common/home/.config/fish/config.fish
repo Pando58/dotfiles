@@ -1,5 +1,6 @@
 if status is-interactive
   export SHELL=$(which fish)
+  export MANPAGER="nvim +Man!"
 
   set -g fish_prompt_pwd_dir_length 0
 

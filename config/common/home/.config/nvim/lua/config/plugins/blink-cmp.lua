@@ -13,6 +13,8 @@ require("blink.cmp").setup({
 
 		["<C-space>"] = {},
 		["<C-e>"] = { "show_and_insert", "hide" },
+		["<C-y>"] = {},
+		["<C-l>"] = { "select_and_accept", "hide" },
 	},
 
 	appearance = {

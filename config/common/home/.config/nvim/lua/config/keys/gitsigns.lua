@@ -6,7 +6,7 @@ end
 
 return {
 	keys = function ()
-		map("<leader>gm", gs.toggle_current_line_blame, "[g]it toggle line commit [m]essage")
+		map("<leader>gb", gs.toggle_current_line_blame, "[g]it toggle current line [b]lame")
 		map("<leader>gw", gs.toggle_word_diff, "[g]it toggle [w]ord diff")
 		map("<leader>ge", function ()
 			gs.toggle_linehl()

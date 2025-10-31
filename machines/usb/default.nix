@@ -3,7 +3,7 @@ inputs @ {
   pkgs-unstable,
   stateVersion,
   neovim-config,
-  latex-config,
+  # latex-config,
   ...
 }: let
   username = "pando";
@@ -115,7 +115,7 @@ in {
 
     packages = with pkgs; [
       inter
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      nerd-fonts.jetbrains-mono
     ];
 
     fontconfig.defaultFonts = {

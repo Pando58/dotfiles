@@ -124,7 +124,7 @@ in {
 
     packages = with pkgs; [
       inter
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      nerd-fonts.jetbrains-mono
     ];
 
     fontconfig.defaultFonts = {

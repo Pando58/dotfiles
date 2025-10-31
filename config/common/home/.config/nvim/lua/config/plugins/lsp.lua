@@ -88,11 +88,13 @@ return {
 	end,
 	setup_nix = function ()
 		for server_name, server_config in pairs(servers) do
-			require("lspconfig")[server_name].setup({
+			vim.lsp.config(server_name, {
 				on_attach = on_attach,
 				capabilities = capabilities,
 				server_config = server_config.config or {},
 			})
+
+			vim.lsp.enable(server_name)
 
 			local load = server_config.load
 

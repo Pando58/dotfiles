@@ -10,6 +10,9 @@ if status is-interactive
 
   abbr logout kill -9 -1
   abbr gs git status
+  abbr gsi git status --ignored
+  abbr gsu git status --untracked
+  abbr gsiu git status --ignored --untracked
   abbr gl git log
   abbr gla git log --exclude=refs/stash --all
   abbr glA git log --all

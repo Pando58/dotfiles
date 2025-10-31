@@ -22,7 +22,7 @@ require("oil").setup({
 		["<M-d>"] = "actions.preview_scroll_down",
 		["<M-u>"] = "actions.preview_scroll_up",
 		["<leader>oc"] = { "actions.close", mode = "n" },
-		["<C-r>"] = "actions.refresh",
+		["<M-r>"] = "actions.refresh",
 		["-"] = { "actions.parent", mode = "n" },
 		["_"] = { "actions.open_cwd", mode = "n" },
 		["`"] = { "actions.cd", mode = "n" },

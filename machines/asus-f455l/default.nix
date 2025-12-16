@@ -31,7 +31,7 @@ in {
     vanilla-dmz
     xclip
     feh
-    xdragon
+    dragon-drop
     redshift
     playerctl
     alsa-utils

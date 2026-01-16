@@ -36,13 +36,6 @@ return {
 
 		-- Format current buffer with LSP
 		vim.api.nvim_buf_create_user_command(buffer_number, "F", function ()
-			for _, c in pairs(vim.lsp.get_clients()) do
-				if c.name == "eslint" then
-					vim.cmd("EslintFixAll")
-					break
-				end
-			end
-
 			vim.lsp.buf.format({ filter = function (client)
 				return
 					client.name ~= "ts_ls"

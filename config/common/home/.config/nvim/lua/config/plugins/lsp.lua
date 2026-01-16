@@ -29,12 +29,9 @@ local servers = {
 		},
 	},
 	eslint = {
-		-- Doesn't work, :EslintFixAll is needed instead
-		-- eslint = {
-		-- 	format = {
-		-- 		enable = true,
-		-- 	},
-		-- },
+		format = {
+			enable = true,
+		},
 	},
 	jsonls = {},
 	html = {},

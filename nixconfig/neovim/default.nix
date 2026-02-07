@@ -38,6 +38,7 @@
             tree-sitter-vim
             tree-sitter-vimdoc
             tree-sitter-bash
+            tree-sitter-qmljs
           ]))
 
           blink-cmp

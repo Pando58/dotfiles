@@ -24,6 +24,7 @@ return function (params)
 				"vim",
 				"vimdoc",
 				"bash",
+				"qmljs",
 			},
 			auto_install = false,
 			highlight = { enable = true },

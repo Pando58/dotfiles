@@ -1,6 +1,6 @@
 return function (params)
 	vim.defer_fn(function () -- Defer Treesitter setup after first render to improve startup time of "nvim {filename}"
-		require("nvim-treesitter.configs").setup({
+		require("nvim-treesitter.config").setup({
 			ensure_installed = params.using_nix and {} or {
 				"lua",
 				"javascript",

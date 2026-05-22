@@ -7,12 +7,14 @@ telescope.setup({
 			prompt_position = "top",
 		},
 		sorting_strategy = "ascending",
-		pickers = {
-			find_files = {
-				hidden = true,
-			},
-		},
 		mappings = require("config.keys.telescope").keys_telescope(),
+	},
+	pickers = {
+		find_files = {
+			hidden = true,
+			follow = true,
+			no_ignore = true,
+		},
 	},
 	extensions = {
 		fzf = {

@@ -11,14 +11,23 @@ return {
 		map("<leader>ss", telescope_builtin.builtin, { desc = "[s]earch built-in pickers" })
 		map("<leader>sB", telescope_builtin.current_buffer_fuzzy_find, { desc = "[s]earch in current [b]uffer" })
 		map("<leader>sb", telescope_builtin.buffers, { desc = "[s]earch [B]uffers" })
-		map("<leader>sf", function () telescope_builtin.find_files({ hidden = true }) end, { desc = "[s]earch [f]iles in current directory" })
+		map("<leader>sf", function ()
+			telescope_builtin.find_files({
+				find_command = { "fd", "--exclude", ".git", "-t=f" },
+			})
+		end, { desc = "[s]earch [f]iles in current directory" })
 		map("<leader>sF", telescope_builtin.oldfiles, { desc = "[s]earch old [F]iles" })
 		map("<leader>sh", telescope_builtin.help_tags, { desc = "[s]earch [h]elp" })
 		map("<leader>sc", telescope_builtin.commands, { desc = "[s]earch [c]ommands" })
 		map("<leader>sr", telescope_builtin.registers, { desc = "[s]earch [r]egisters" })
 		map("<leader>sw", telescope_builtin.grep_string, { desc = "[s]earch current [w]ord" })
 		map("<leader>sg", telescope_builtin.live_grep, { desc = "[s]earch with [g]rep" })
-		map("<leader>sd", telescope_builtin.diagnostics, { desc = "[s]earch [d]iagnostics" })
+		map("<leader>sdr", function ()
+			telescope_builtin.find_files({
+				find_command = { "fd", "--exclude", ".git", "-t=d" },
+			})
+		end, { desc = "[s]earch [d]i[r]ectories" })
+		map("<leader>sdi", telescope_builtin.diagnostics, { desc = "[s]earch [di]agnostics" })
 		map("<leader>slsb", telescope_builtin.lsp_document_symbols, { desc = "[s]earch [l]sp [s]ymbols in the current [b]uffer" })
 		map("<leader>slsw", telescope_builtin.lsp_workspace_symbols, { desc = "[s]earch [l]sp [s]ymbols in the current [w]orkspace" })
 		map("<leader>st", telescope_builtin.treesitter, { desc = "[s]earch stuff from treesitter" })

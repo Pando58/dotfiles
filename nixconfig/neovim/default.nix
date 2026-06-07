@@ -90,8 +90,8 @@
     fd
 
     lua-language-server
-    nodePackages.typescript-language-server
-    nodePackages.svelte-language-server
+    typescript-language-server
+    svelte-language-server
     vscode-langservers-extracted # html, css, json and eslint
     tailwindcss-language-server
     emmet-ls

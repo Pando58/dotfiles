@@ -13,7 +13,7 @@ return {
 		map("<leader>sb", telescope_builtin.buffers, { desc = "[s]earch [B]uffers" })
 		map("<leader>sf", function ()
 			telescope_builtin.find_files({
-				find_command = { "fd", "--exclude", ".git", "-t=f" },
+				find_command = { "fd", "--exclude", ".git", "-t=f", "--ignore-file", ".ignore" },
 			})
 		end, { desc = "[s]earch [f]iles in current directory" })
 		map("<leader>sF", telescope_builtin.oldfiles, { desc = "[s]earch old [F]iles" })
@@ -24,7 +24,7 @@ return {
 		map("<leader>sg", telescope_builtin.live_grep, { desc = "[s]earch with [g]rep" })
 		map("<leader>sdr", function ()
 			telescope_builtin.find_files({
-				find_command = { "fd", "--exclude", ".git", "-t=d" },
+				find_command = { "fd", "--exclude", ".git", "-t=d", "--ignore-file", ".ignore" },
 			})
 		end, { desc = "[s]earch [d]i[r]ectories" })
 		map("<leader>sdi", telescope_builtin.diagnostics, { desc = "[s]earch [di]agnostics" })

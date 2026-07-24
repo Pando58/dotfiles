@@ -58,6 +58,23 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	pattern = '*',
 })
 
+-- Enable treesitter
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = "*",
+	callback = function()
+		pcall(vim.treesitter.start)
+		-- if vim.bo.buftype ~= "" then
+		-- 	return
+		-- end
+		--
+		-- if vim.tbl_contains({ "oil", "gitcommit" }, vim.bo.filetype) then
+		-- 	return
+		-- end
+		--
+		-- vim.treesitter.start()
+	end
+})
+
 -- Diagnostic icons
 --[[ vim.fn.sign_define("DiagnosticSignError", {text = " ", texthl = "DiagnosticSignError"})
 vim.fn.sign_define("DiagnosticSignWarn", {text = " ", texthl = "DiagnosticSignWarn"})
